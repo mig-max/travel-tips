@@ -15,8 +15,8 @@ function Navbar() {
 
     const menu=[
         {
-            name: 'Home',
-            icon: HiHome
+          name: 'Home',
+          icon: HiHome
         },
         {
           name: 'Search',
@@ -39,9 +39,7 @@ function Navbar() {
       <h1>TipTravel</h1>
       <img src={logo} alt="logo" className="w-[80px] md:w-[115px] object-cover"/>
       {menu.map((item, index) => (
-        <NavLink to={item.name} key={index} className="navbar-nav navbar">
-          <NavbarItem name={item.name} icon={item.icon} />
-        </NavLink>
+        <NavLink to={item.name} key={index} className="navbar-nav navbar">{item.name}</NavLink>
       ))}
     </nav>
   </div>
