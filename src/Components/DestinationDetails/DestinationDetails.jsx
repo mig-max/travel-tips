@@ -9,7 +9,7 @@ function DestinationDetails () {
 
     const {destinationId} = useParams();
 
-    const [destination, setDestination] = useState([]);
+    const [destination, setDestination] = useState(API_URL[0]);
 
     const navigate = useNavigate();
 
@@ -27,8 +27,6 @@ function DestinationDetails () {
     useEffect(() => {
         getDestination();
     }, [destinationId]);
-
-
 
 
 
@@ -55,11 +53,9 @@ function DestinationDetails () {
             <span className="good-for-family">Good for family!</span>
         )}
 
-         {/*    
-
         <Link className='edit-link' to={`/destinations/${destination.id}/edit`}>Edit</Link>
 
-        */}
+
 
         <button className="back-button" onClick={() => navigate(-1)}>Back</button>
       
