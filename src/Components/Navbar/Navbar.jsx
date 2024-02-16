@@ -1,37 +1,12 @@
 import React from 'react'
 import logo from '../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
-import {IconName} from 'react-icons'
-import { HiHome,
-    HiMagnifyingGlass,
-    HiStar,
-    HiPlayCircle,
-    HiTv } from "react-icons/hi2";
-import { HiPlus,  HiDotsVertical } from 'react-icons/hi';
+
 
 
 
 function Navbar() {
-
-    const menu=[
-        {
-          name: 'Home',
-          icon: HiHome
-        },
-        {
-          name: 'Search',
-          icon: HiMagnifyingGlass
-        },
-        {
-          name: 'Favorites',
-          icon: HiStar
-        },
-        {
-
-        }
-    ]
     
-
 
   return (
     <div>

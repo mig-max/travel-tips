@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import axios from "axios";
 
@@ -5,7 +6,7 @@ import axios from "axios";
 function AddDestination(props) {
     const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
-    const [destination, setDestination] = useState("");
+
 
     const [city, setCity] = useState("");
     const [description, setDescription] = useState("");

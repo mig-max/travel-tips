@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-import AddDestination from '../Destination/AddDestination/AddDestination';
+import AddDestination from '../AddDestination/AddDestination';
 import './DestinationsList.css';
 
 function DestinationsList() {
     const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
     
     const [destinationsToDisplay, setDestinationsToDisplay] = useState([]);
+    
     const [deletingId, setDeletingId] = useState(null);
 
     const getAllDestinationsToDisplay = () => {
@@ -43,15 +45,18 @@ function DestinationsList() {
 
     return (
 
-        <div className='destinations-list'>
+        <div className='destinations-list' key={destinationsToDisplay.id}>
 
          <AddDestination AddNewDestination={destinationAdd}/>
 
-            {destinationsToDisplay.map((destination, index) => (
+            {destinationsToDisplay && destinationsToDisplay.map((destination) => (
                 <div key={destination.id} className='destination-card'>
                     <h1>{destination.city}</h1>
-                    <p>{destination.description}</p>
                     <img src={destination.imageURL} alt={destination.name} />
+                    <h2>{destination.topTip}</h2>
+
+                    <Link className='link-button' to={`/destinations/${destination.id}`}>Details</Link>
+
                     <button onClick={() => deleteButton(destination.id)} disabled={deletingId === destination.id}>Delete</button>
                 </div>
             ))}
