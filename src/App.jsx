@@ -1,11 +1,8 @@
 
 import './App.css'
-
-import {Routes, Route} from 'react-router-dom'
-
-import DestinationsList from './Components/DestinationsList/DestinationsList'
-import DestinationDetails from './Components/DestinationDetails/DestinationDetails'
-
+import DestinationsList from './Components/Destinations_List/DestinationsList'
+import {BrowserRouter as Routes, Route, Link} from 'react-router-dom'
+import Navbar from './Components/Navbar/Navbar'
 
 
 
