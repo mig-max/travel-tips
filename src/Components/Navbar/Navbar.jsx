@@ -1,43 +1,30 @@
 import React from 'react'
 import logo from '../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
-<<<<<<< HEAD
-
-=======
-//import {IconName} from 'react-icons'
 import { HiHome,
-    HiMagnifyingGlass,
-    HiStar,
-    HiPlayCircle,
-    HiTv } from "react-icons/hi2";
-import { HiPlus,  HiDotsVertical } from 'react-icons/hi';
->>>>>>> 914eec5 (navbar and navbaritems implemented with navlink and tailwind installation)
-
+  HiMagnifyingGlass,
+  HiStar} from "react-icons/hi2";
 
 
 function Navbar() {
-<<<<<<< HEAD
-=======
-
-    const menu=[
-        {
-          name: 'Home',
-          icon: HiHome
-          path: '/'
-        },
-        {
-          name: 'Search',
-          icon: HiMagnifyingGlass
-          path: '/search'
-        },
-        {
-          name: 'Favorites',
-          icon: HiStar
-          path: '/favorites'
-        }
-    ]
->>>>>>> 914eec5 (navbar and navbaritems implemented with navlink and tailwind installation)
     
+  const menu=[
+    {
+      name: 'Home',
+      icon: HiHome,
+      path: '/'
+    },
+    {
+      name: 'Search',
+      icon: HiMagnifyingGlass,
+      path: '/search'
+    },
+    {
+      name: 'Favorites',
+      icon: HiStar,
+      path: '/favorites'
+    }
+]
 
   return (
     <div className='flex items-center gap-8 bg-blue-500 bg-opacity-50'>

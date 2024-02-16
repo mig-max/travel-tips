@@ -9,7 +9,7 @@ function DestinationDetails () {
 
     const {destinationId} = useParams();
 
-    const [destination, setDestination] = useState(API_URL[0]);
+    const [destination, setDestination] = useState([]);
 
     const navigate = useNavigate();
 
