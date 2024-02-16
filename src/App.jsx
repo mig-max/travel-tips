@@ -1,15 +1,10 @@
 
 import './App.css'
 import DestinationDetails from './Components/DestinationDetails/DestinationDetails'
-<<<<<<< HEAD
 import DestinationsList from './Components/DestinationsList/DestinationsList'
 import {Routes, Route, Link} from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar'
-=======
 import EditDestination from './Components/EditDestination/EditDestination'
-
->>>>>>> be112f9 (adding page for editing and updating)
-
 
 
 function App() {

@@ -57,13 +57,13 @@ function EditDestination() {
                 <form onSubmit={handleSubmit}>
                     <h2>Edit your Travel Tip here!</h2>
                     <label className="form-label">
-                        Best Neighbourhood:
+                        Best Accomodation:
                         <input
                             className="form-input"
                             type="text"
                             name="neighbourhood"
                             placeholder="Enter your favorite neighbourhood"
-                            value={EditDestination.neighbourhood || ""}
+                            value={EditDestination.accommodation || ""}
                             onChange={handleInputChange}
                         />
                     </label>
