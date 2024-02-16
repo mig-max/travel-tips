@@ -1,1 +1,26 @@
-r
+.destinations-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.destination-card {
+    width: 300px; 
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.destination-card h1 {
+    margin-top: 0;
+}
+
+.destination-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
