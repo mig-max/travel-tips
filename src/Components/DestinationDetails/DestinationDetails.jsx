@@ -45,6 +45,15 @@ function DestinationDetails () {
         <h3 className="destination-details-sub-title">{destination.dailyBudget}</h3>
         <h3 className="destination-details-sub-title">{destination.accommodation}</h3>
 
+        <p>{destination.description}</p>
+        <p>{destination.neighbourhood}</p>
+        <p>{destination.park}</p>
+        <p>{destination.museum}</p> 
+
+
+
+        <h3 className="destination-details-sub-title">{destination.key}</h3>
+
         {destination.isGoodForNight === true && (
             <span className="good-for-night">Good for night out!</span>
         )}

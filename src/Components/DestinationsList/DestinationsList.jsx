@@ -47,7 +47,7 @@ function DestinationsList() {
 
         <div className='destinations-list' key={destinationsToDisplay.id}>
 
-         <AddDestination AddNewDestination={destinationAdd}/>
+         <AddDestination getAllDestinationsToDisplay={destinationAdd}/>
 
             {destinationsToDisplay && destinationsToDisplay.map((destination) => (
                 <div key={destination.id} className='destination-card'>

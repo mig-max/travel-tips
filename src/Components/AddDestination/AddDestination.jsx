@@ -6,8 +6,8 @@ import axios from "axios";
 function AddDestination(props) {
     const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
-
-
+   
+   
     const [city, setCity] = useState("");
     const [description, setDescription] = useState("");
     const [topBite, setTopBite] = useState("");
@@ -21,8 +21,9 @@ function AddDestination(props) {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      
+
       const newDestination = {
+          id: Math.floor(Math.random() * 100), // temporary unique ID until backend is implemented
           city,
           description,
           topBite,
@@ -34,29 +35,31 @@ function AddDestination(props) {
           isGoodForFamily,
           imageURL
       };
-  
-      axios.post(API_URL, newDestination)
-          .then((response) => {
-              alert("Destination added successfully!");
-              console.log(response);
-  
-              // Clear form fields after successful submission
-              setCity("");
-              setDescription("");
-              setTopBite("");
-              setTopSight("");
-              setTopTip("");
-              setAccommodation("");
-              setDailyBudget(0);
-              setIsGoodForNight(false);
-              setIsGoodForFamily(false);
-              setImageURL("");
-  
-              // Trigger parent component methods
-              props.AddNewDestination(newDestination);
-              props.getAllDestinationsToDisplay(newDestination);
-          })
-          .catch((error) => console.log("Error posting the new destination", error));
+
+
+        axios.post(API_URL, newDestination)
+        .then((response) => {
+            alert("Destination added successfully!");
+            console.log(response);
+
+            // Clear form fields after successful submission
+            setCity("");
+            setDescription("");
+            setTopBite("");
+            setTopSight("");
+            setTopTip("");
+            setAccommodation("");
+            setDailyBudget(0);
+            setIsGoodForNight(false);
+            setIsGoodForFamily(false);
+            setImageURL("");
+
+            // Trigger parent component methods
+            props.AddNewDestination(newDestination);
+            props.getAllDestinationsToDisplay(newDestination);
+        })
+        .catch((error) => console.log("Error posting the new destination", error));
+      
   };
   
 
@@ -135,7 +138,7 @@ function AddDestination(props) {
     <label className="form-label">
     Where to sleep:
     <input
-      name="accomodation"
+      name="accommodation"
       type="text"
       placeholder="Accomodation"
       value={accommodation}
