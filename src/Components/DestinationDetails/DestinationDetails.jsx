@@ -1,11 +1,12 @@
 import {Link, useParams, useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "semantic-ui-react";
 
+const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 function DestinationDetails () {
 
-    const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
     const {destinationId} = useParams();
 
@@ -62,11 +63,12 @@ function DestinationDetails () {
             <span className="good-for-family">Good for family!</span>
         )}
 
-        <Link className='edit-link' to={`/destinations/${destination.id}/edit`}>Edit</Link>
+
+        <Link className='edit-link' to={`/destinations/${destination.id}/edit`} exact="true">Edit</Link>
 
 
 
-        <button className="back-button" onClick={() => navigate(-1)}>Back</button>
+        <Button className="back-button" onClick={() => navigate(-1)} exact="true">Back</Button>
       
         </div>
 

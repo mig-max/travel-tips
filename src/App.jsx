@@ -2,9 +2,10 @@
 import './App.css'
 import DestinationDetails from './Components/DestinationDetails/DestinationDetails'
 import DestinationsList from './Components/DestinationsList/DestinationsList'
-import {Routes, Route, Link} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar'
 import EditDestination from './Components/EditDestination/EditDestination'
+import SearchBar from './Pages/SearchBar/SearchBar'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
     <Navbar/>
+    <SearchBar/>
     <Routes>
       <Route path="/" element={<DestinationsList />} />
       <Route path="/destinations" element={<DestinationsList />} />
@@ -24,7 +26,7 @@ function App() {
 
  
       
-        <Route path="/destinations/new" element={<DestinationNew />} />
+      
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFount/>} /> 
