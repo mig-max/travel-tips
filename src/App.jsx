@@ -35,12 +35,7 @@ function App() {
     </Routes>
 
     <Footer/> 
-
-<<<<<<< HEAD
-{/* */}
-=======
-
->>>>>>> refs/remotes/origin/main
+    
     
 
  
