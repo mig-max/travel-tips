@@ -40,16 +40,16 @@ function DestinationDetails () {
 
         <p className="destination-details-description">{destination.description}</p>
 
-        <h2 className="destination-details-sub-title">{destination.topTip}</h2>
-        <h3 className="destination-details-sub-title">{destination.topBite}</h3>
-        <h3 className="destination-details-sub-title">{destination.topSight}</h3>
-        <h3 className="destination-details-sub-title">{destination.dailyBudget}</h3>
-        <h3 className="destination-details-sub-title">{destination.accommodation}</h3>
+        <h2 className="destination-details-sub-title">Top Tip: {destination.topTip}</h2>
+        <h3 className="destination-details-sub-title">Top Bite: {destination.topBite}</h3>
+        <h3 className="destination-details-sub-title">Top Sight: {destination.topSight}</h3>
+        <h3 className="destination-details-sub-title">Daily Budget: {destination.dailyBudget}€</h3>
+        <h3 className="destination-details-sub-title">Where to Sleep: {destination.accommodation}</h3>
 
         <p>{destination.description}</p>
-        <p>{destination.neighbourhood}</p>
-        <p>{destination.park}</p>
-        <p>{destination.museum}</p> 
+        <p>Top neighbourhood: {destination.neighbourhood}</p>
+        <p>Top park: {destination.park}</p>
+        <p>Top museum:{destination.museum}</p> 
 
 
 
@@ -66,9 +66,9 @@ function DestinationDetails () {
 
         <Link className='edit-link' to={`/destinations/${destination.id}/edit`} exact="true">Edit</Link>
 
-
-
         <Button className="back-button" onClick={() => navigate(-1)} exact="true">Back</Button>
+
+        <Button className="back-button" onClick={() => navigate("/")} exact="true">Home</Button>
       
         </div>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button } from "semantic-ui-react";
@@ -6,8 +6,6 @@ import { Form, Button } from "semantic-ui-react";
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 function EditDestination() {
-
-
   const { destinationId } = useParams();
 
   const [destinationData, setDestinationData] = useState({
@@ -23,18 +21,25 @@ function EditDestination() {
     imageURL: "",
     neighbourhood: "",
     park: "",
-    museum: ""
+    museum: "",
   });
-  
 
   const navigate = useNavigate();
 
-  // Update the destination data state
-  const handleInputChange = (event) => {
-    const { name, value, type } = event.target;
-    const inputValue = type === "checkbox" ? event.target.checked : value;
-    setDestinationData({ ...destinationData, [name]: inputValue });
-  };
+  // Function to get existing destination data from the server and pre-populate the form
+  useEffect(() => {
+    const fetchDestinationData = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/${destinationId}`);
+        const existingDestinationData = response.data;
+        setDestinationData(existingDestinationData);
+      } catch (error) {
+        console.error("Error fetching existing destination data:", error);
+      }
+    };
+
+    fetchDestinationData();
+  }, [destinationId]);
 
   // Function to update destination
   const updateDestination = () => {
@@ -43,12 +48,18 @@ function EditDestination() {
       .then((response) => {
         const existingDestinationData = response.data; // Assuming the response contains the existing destination data
 
+        // Merge destinationData into existingDestinationData, updating only non-empty fields
         const updatedDestinationData = {
           ...existingDestinationData,
-          ...destinationData, // merge the existing data with the new data
+          ...Object.keys(destinationData).reduce((value, key) => {
+            if (destinationData[key] !== "") {
+              value[key] = destinationData[key];
+            }
+            return value;
+          }, {}),
         };
 
-        axios
+        axios  // Update the destination in the database
           .put(`${API_URL}/${destinationId}`, updatedDestinationData)
           .then((response) => {
             console.log("Destination updated successfully", response);
@@ -76,6 +87,14 @@ function EditDestination() {
     navigate(`/`);
   };
 
+  // Update the destination data state and user interface
+  const handleInputChange = (event) => {
+    const { name, value, type } = event.target;
+    const inputValue = type === "checkbox" ? event.target.checked : value;
+
+    setDestinationData({ ...destinationData, [name]: inputValue });
+  };
+
   return (
     <div className="edit-container">
       <h2>Edit your Travel Tip here!</h2>
@@ -87,6 +106,7 @@ function EditDestination() {
             type="text"
             placeholder="City"
             value={destinationData.city}
+            disabled={destinationData.city !== ""}
             onChange={handleInputChange}
           />
         </Form.Field>
@@ -98,6 +118,17 @@ function EditDestination() {
             type="text"
             placeholder="Description"
             value={destinationData.description}
+            onChange={handleInputChange}
+          />
+        </Form.Field>
+
+        <Form.Field>
+          <label className="form-label">Top Tip:</label>
+          <input
+            name="topTip"
+            type="text"
+            placeholder="Top Tip"
+            value={destinationData.topTip}
             onChange={handleInputChange}
           />
         </Form.Field>
@@ -120,17 +151,6 @@ function EditDestination() {
             type="text"
             placeholder="Top Sight"
             value={destinationData.topSight}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-
-        <Form.Field>
-          <label className="form-label">Top Tip:</label>
-          <input
-            name="topTip"
-            type="text"
-            placeholder="Top Tip"
-            value={destinationData.topTip}
             onChange={handleInputChange}
           />
         </Form.Field>
@@ -168,8 +188,8 @@ function EditDestination() {
         </Form.Field>
 
         <Form.Field>
-            <label className="form-label">Good For Families:</label>
-            <input
+          <label className="form-label">Good For Families:</label>
+          <input
             type="checkbox"
             name="isGoodForFamily"
             checked={destinationData.isGoodForFamily}
@@ -189,7 +209,7 @@ function EditDestination() {
         </Form.Field>
 
         <Form.Field>
-          <label className="form-label">Best neighbourhood: </label>
+          <label className="form-label">Top neighbourhood: </label>
           <input
             className="form-input"
             type="text"
@@ -201,7 +221,7 @@ function EditDestination() {
         </Form.Field>
 
         <Form.Field>
-          <label className="form-label">Best park:</label>
+          <label className="form-label">Top park:</label>
           <input
             className="form-input"
             type="text"
@@ -213,7 +233,7 @@ function EditDestination() {
         </Form.Field>
 
         <Form.Field>
-          <label className="form-label">Best museum:</label>
+          <label className="form-label">Top museum:</label>
           <input
             className="form-input"
             type="text"
@@ -224,19 +244,28 @@ function EditDestination() {
           />
         </Form.Field>
 
-        <Button type="submit">Save</Button>
+        <Button type="submit" exact="true">
+          Save
+        </Button>
 
-        <Link className="link-button" to={`/destinations/${destinationId}`} exact="true">
+        <Link
+          className="link-button"
+          to={`/destinations/${destinationId}`}
+          exact="true"
+        >
           Back
         </Link>
 
-        <Link className="link-button" to="/" exact="true">
-          Home page
-        </Link>
+        <Button
+          className="back-button"
+          onClick={() => navigate("/")}
+          exact="true"
+        >
+          Home
+        </Button>
       </Form>
     </div>
   );
 }
 
 export default EditDestination;
-

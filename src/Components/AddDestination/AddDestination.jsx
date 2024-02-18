@@ -59,7 +59,7 @@ function AddDestination(props) {
         setImageURL("");
 
         // Trigger parent component methods
-        props.AddNewDestination(newDestination);
+     
         props.getAllDestinationsToDisplay(newDestination);
 
         navigate("/");

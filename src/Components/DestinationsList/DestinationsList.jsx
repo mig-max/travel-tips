@@ -6,13 +6,12 @@ import { Button } from "semantic-ui-react";
 import AddDestination from '../AddDestination/AddDestination';
 import './DestinationsList.css';
 
+
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 function DestinationsList() {
 
-
     const [destination, setDestination] = useState([]);
-    
     const [deletingId, setDeletingId] = useState(null);
 
     const getAllDestinationsToDisplay = () => {
@@ -23,7 +22,6 @@ function DestinationsList() {
     useEffect(() => {
         getAllDestinationsToDisplay();
     }, []);
-
 
 
     // delete destination from database with given id
@@ -51,13 +49,14 @@ function DestinationsList() {
 
         <div className='destinations-list' key={destination.id}>
 
+
          <AddDestination getAllDestinationsToDisplay={destinationAdd}/>
 
             {destination && destination.map((destination) => (
                 <div key={destination.id} className='destination-card'>
                     <h1>{destination.city}</h1>
                     <img src={destination.imageURL} alt={destination.name} />
-                    <h2>{destination.topTip}</h2>
+                    <h2>Tip: {destination.topTip}</h2>
 
                     <Link className='link-button' to={`/destinations/${destination.id}`} exact="true">Details</Link>
 
