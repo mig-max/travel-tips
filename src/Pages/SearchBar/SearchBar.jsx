@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import { Grid, GridRow, Search } from 'semantic-ui-react';
+import './SearchBar.css'
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
@@ -67,7 +68,8 @@ function SearchBar() {
   return (
       <Grid>
           <GridRow width={60}>
-              <Search 
+              <Search className="search-bar"
+              
                   loading={loading}
                   placeholder= "Search for a city here..." 
                   onSearchChange={handleSearch}

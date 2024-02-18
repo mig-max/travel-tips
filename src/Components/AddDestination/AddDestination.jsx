@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form } from "semantic-ui-react";
+import "./AddDestination.css"
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
