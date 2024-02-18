@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { Button, List } from "semantic-ui-react";
 import  heartEmpty  from "../../assets/heart-empty.png";
@@ -22,6 +22,8 @@ function DestinationsList() {
     const [isFavorite, setIsFavorite] = useState(false);
     //sort
     const [sortedDestination, setSortedDestination] = useState([]);
+
+    const navigate = useNavigate();
 
     const getAllDestinationsToDisplay = () => {
         axios.get(API_URL)
@@ -136,8 +138,12 @@ function DestinationsList() {
                     <h1>{destination.city}</h1>
                     <img src={destination.imageURL} alt={destination.name} />
                     <h2>Tip: {destination.topTip}</h2>
+                    
 
-                    <Link className='link-button' to={`/destinations/${destination.id}`} exact="true">Details</Link>
+
+                   
+
+                    <Button className='link-button' onClick={() => navigate(`/destinations/${destination.id}`)}>Details</Button>
 
                     <Button onClick={() => deleteButton(destination.id)} disabled={deletingId === destination.id} exact="true">Delete</Button>
                     <div className='rating-icon-container'>

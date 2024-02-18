@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button } from "semantic-ui-react";
 
@@ -248,13 +248,9 @@ function EditDestination() {
           Save
         </Button>
 
-        <Link
-          className="link-button"
-          to={`/destinations/${destinationId}`}
-          exact="true"
-        >
+        <Button onClick={() => navigate(`/destinations/${destinationId}`)} exact="true">
           Back
-        </Link>
+        </Button>
 
         <Button
           className="back-button"

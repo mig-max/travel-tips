@@ -1,7 +1,8 @@
 import logo from '../../assets/logo2.png'
 import { NavLink } from 'react-router-dom'
 import { HiHome, HiMagnifyingGlass, HiStar } from "react-icons/hi2";
-import { IoIosAddCircle } from "react-icons/io";
+import { IoIosAddCircle, IoMdContact } from "react-icons/io";
+import { RiTeamFill } from "react-icons/ri";
 
 
 function Navbar() {
@@ -26,6 +27,16 @@ function Navbar() {
       name: 'Favorites',
       icon: HiStar,
       path: '/favorites'
+    },
+    {
+      name: 'About',
+      icon: RiTeamFill,
+      path: '/about'
+    },
+    {
+      name: 'Contacts',
+      icon: IoMdContact,
+      path: '/contact'
     }
 ]
 
