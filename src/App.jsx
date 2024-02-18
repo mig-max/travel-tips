@@ -8,10 +8,13 @@ import Navbar from './Components/Navbar/Navbar'
 import EditDestination from './Components/EditDestination/EditDestination'
 import SearchBar from './Pages/SearchBar/SearchBar'
 import AddDestination from './Components/AddDestination/AddDestination'
+import Contact from './Pages/Contact/Contact'
+import NotFound from './Pages/NotFound/NotFound'
+import About from './Pages/About/About'
+import Footer from './Components/Footer/Footer'
 
 
 function App() {
-  
 
   return (
     <>
@@ -25,25 +28,18 @@ function App() {
       <Route path="/destinations/:destinationId" element={<DestinationDetails />} />
       <Route path="/add" element={<AddDestination/>} />
       <Route path="/destinations/:destinationId/edit" element={<EditDestination />} />
-    
-      
-      
-      {/*
-
- 
-      
-      
-      <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
       <Route path="*" element={<NotFound/>} /> 
       
     </Routes>
 
-{/* <Footer/> */}
+    <Footer/> 
+
+
     
 
- </Routes>
+ 
     
      
     </>
