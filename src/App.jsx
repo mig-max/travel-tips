@@ -9,8 +9,8 @@ import EditDestination from './Components/EditDestination/EditDestination'
 import SearchBar from './Pages/SearchBar/SearchBar'
 import AddDestination from './Components/AddDestination/AddDestination'
 
-
 function App() {
+  
 
   return (
     <>
@@ -23,6 +23,10 @@ function App() {
       <Route path="/destinations/:destinationId" element={<DestinationDetails />} />
       <Route path="/add" element={<AddDestination/>} />
       <Route path="/destinations/:destinationId/edit" element={<EditDestination />} />
+     
+
+      
+      
     
       
       

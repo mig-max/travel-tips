@@ -31,7 +31,6 @@ function DestinationDetails () {
 
 
 
-
     return (
 
         <div className="destination-details-card">
