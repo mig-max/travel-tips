@@ -36,7 +36,11 @@ function App() {
 
     <Footer/> 
 
+<<<<<<< HEAD
 {/* */}
+=======
+
+>>>>>>> refs/remotes/origin/main
     
 
  
