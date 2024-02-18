@@ -11,6 +11,7 @@ import AddDestination from './Components/AddDestination/AddDestination'
 import Contact from './Pages/Contact/Contact'
 import NotFound from './Pages/NotFound/NotFound'
 import About from './Pages/About/About'
+import Footer from './Components/Footer/Footer'
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
       <Route path="*" element={<NotFound/>} /> 
       
     </Routes>
+
+{/* <Footer/> */}
+    
 
  
     

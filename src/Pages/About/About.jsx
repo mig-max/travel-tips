@@ -13,13 +13,14 @@ function About () {
             <p>
             Create a Single Page Application (SPA), using React, consisting of multiple views. The React application should be integrated with either a mock backend or an external API and should perform all CRUD (Create, Read, Update, Delete) operations on that API. The app should be responsive. 
             </p>
+            
             <h3>Miguel Chito</h3>
             
             <a href="https://github.com/donxito"><Button>Github</Button></a>
             <a href="XXXXXXXXXXX"><Button>LinkedIn</Button></a>
             
 
-            <h3>Max XXXXXXX</h3>
+            <h3>Max Wellings</h3>
 
             <a href="https://github.com/Logrance"><Button>Github</Button></a>
             <a href="XXXXXXX"><Button>LinkedIn</Button></a>
