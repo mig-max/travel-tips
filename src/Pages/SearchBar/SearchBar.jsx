@@ -66,8 +66,8 @@ function SearchBar() {
   
   return (
       <Grid>
-          <GridRow width={12}>
-              <Search
+          <GridRow width={60}>
+              <Search 
                   loading={loading}
                   placeholder= "Search for a city here..." 
                   onSearchChange={handleSearch}

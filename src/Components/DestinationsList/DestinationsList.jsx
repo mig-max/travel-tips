@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { Button } from "semantic-ui-react";
 
-import AddDestination from '../AddDestination/AddDestination';
 import './DestinationsList.css';
 
 
@@ -49,8 +48,6 @@ function DestinationsList() {
 
         <div className='destinations-list' key={destination.id}>
 
-
-         <AddDestination getAllDestinationsToDisplay={destinationAdd}/>
 
             {destination && destination.map((destination) => (
                 <div key={destination.id} className='destination-card'>

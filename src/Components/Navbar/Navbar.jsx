@@ -1,9 +1,7 @@
-import React from 'react'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo2.png'
 import { NavLink } from 'react-router-dom'
-import { HiHome,
-  HiMagnifyingGlass,
-  HiStar} from "react-icons/hi2";
+import { HiHome, HiMagnifyingGlass, HiStar } from "react-icons/hi2";
+import { IoIosAddCircle } from "react-icons/io";
 
 
 function Navbar() {
@@ -13,6 +11,11 @@ function Navbar() {
       name: 'Home',
       icon: HiHome,
       path: '/'
+    },
+    {
+      name: 'Add',
+      icon: IoIosAddCircle,
+      path: '/add'
     },
     {
       name: 'Search',

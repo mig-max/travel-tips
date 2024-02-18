@@ -7,7 +7,7 @@ import { Button, Checkbox, Form } from "semantic-ui-react";
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 
-function AddDestination(props) {
+function AddDestination() {
 
   const navigate = useNavigate();
 
@@ -58,9 +58,7 @@ function AddDestination(props) {
         setIsGoodForFamily(false);
         setImageURL("");
 
-        // Trigger parent component methods
-     
-        props.getAllDestinationsToDisplay(newDestination);
+ 
 
         navigate("/");
       })
