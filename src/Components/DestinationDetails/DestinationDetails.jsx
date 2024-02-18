@@ -46,7 +46,6 @@ function DestinationDetails () {
         <h3 className="destination-details-sub-title">Daily Budget: {destination.dailyBudget}€</h3>
         <h3 className="destination-details-sub-title">Where to Sleep: {destination.accommodation}</h3>
 
-        <p>{destination.description}</p>
         <p>Top neighbourhood: {destination.neighbourhood}</p>
         <p>Top park: {destination.park}</p>
         <p>Top museum: {destination.museum}</p> 
