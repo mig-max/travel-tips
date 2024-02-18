@@ -1,8 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Button, Checkbox, Form } from "semantic-ui-react";
-
-const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
+import { Button, Form } from "semantic-ui-react";
 
 function Contact() {
   const [name, setName] = useState("");

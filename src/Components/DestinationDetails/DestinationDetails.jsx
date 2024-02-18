@@ -1,4 +1,4 @@
-import {Link, useParams, useNavigate} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "semantic-ui-react";
@@ -49,7 +49,7 @@ function DestinationDetails () {
         <p>{destination.description}</p>
         <p>Top neighbourhood: {destination.neighbourhood}</p>
         <p>Top park: {destination.park}</p>
-        <p>Top museum:{destination.museum}</p> 
+        <p>Top museum: {destination.museum}</p> 
 
 
 
@@ -63,8 +63,7 @@ function DestinationDetails () {
             <span className="good-for-family">Good for family!</span>
         )}
 
-
-        <Link className='edit-link' to={`/destinations/${destination.id}/edit`} exact="true">Edit</Link>
+        <Button className="destination-details-button" onClick={() => navigate(`/destinations/${destination.id}/edit`)}>Edit</Button>
 
         <Button className="back-button" onClick={() => navigate(-1)} exact="true">Back</Button>
 

@@ -248,13 +248,9 @@ function EditDestination() {
           Save
         </Button>
 
-        <Link
-          className="link-button"
-          to={`/destinations/${destinationId}`}
-          exact="true"
-        >
+        <Button onClick={() => navigate(`/destinations/${destinationId}`)} exact="true">
           Back
-        </Link>
+        </Button>
 
         <Button
           className="back-button"
