@@ -10,6 +10,7 @@ import SearchBar from './Pages/SearchBar/SearchBar'
 import AddDestination from './Components/AddDestination/AddDestination'
 import Contact from './Pages/Contact/Contact'
 import NotFound from './Pages/NotFound/NotFound'
+import About from './Pages/About/About'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <Navbar/>
 
     <Routes>
+
       <Route path="/" element={<DestinationsList />} />
       <Route path="/destinations" element={<DestinationsList />} />
       <Route path="/search" element={<SearchBar/>} />
@@ -26,19 +28,9 @@ function App() {
       <Route path="/add" element={<AddDestination/>} />
       <Route path="/destinations/:destinationId/edit" element={<EditDestination />} />
       <Route path="/contact" element={<Contact />} />
-
-      <Route path="*" element={<NotFound/>} /> 
-    
-      
-      
-      {/*
-      
       <Route path="/about" element={<About />} />
+      <Route path="*" element={<NotFound/>} /> 
       
-     
-
-      */}
-
     </Routes>
 
  
