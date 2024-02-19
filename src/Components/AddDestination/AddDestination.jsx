@@ -88,9 +88,10 @@ function AddDestination() {
       </Heading>
 
       <Form fontFamily={"Poppins"}  fontSize={"xl"} className="edit-container" onSubmit={handleSubmit}>
+      
         <Form.Field required>
           <label className="form-label">City:</label>
-          <input
+          <Input
             name="city" 
             type="text"
             placeholder="City"
@@ -116,7 +117,7 @@ function AddDestination() {
 
         <Form.Field>
           <label className="form-label">Top Bite:</label>
-          <input
+          <Input
             name="topBite"
             type="text"
             placeholder="Top Bite"
@@ -129,7 +130,7 @@ function AddDestination() {
 
         <Form.Field>
           <label className="form-label">Top Sight:</label>
-          <input
+          <Input
             name="topSight"
             type="text"
             placeholder="Top Sight"
@@ -142,7 +143,7 @@ function AddDestination() {
 
         <Form.Field>
           <label className="form-label">Top Tip:</label>
-          <input
+          <Input
             name="topTip"
             type="text"
             placeholder="Top Tip"
@@ -155,7 +156,7 @@ function AddDestination() {
 
         <Form.Field>
           <label className="form-label">Where to sleep:</label>
-          <input
+          <Input
             name="accommodation"
             type="text"
             placeholder="Accomodation"
@@ -168,7 +169,7 @@ function AddDestination() {
 
         <Form.Field>
           <label className="form-label">Daily Budget:</label>
-          <input
+          <Input
             name="dailyBudget"
             type="number"
             placeholder="Daily Budget"
@@ -181,7 +182,7 @@ function AddDestination() {
 
         <Form.Field>
           <label className="form-label">Image URL:</label>
-          <input
+          <Input
             name="imageURL"
             type="url"
             placeholder="Insert image URL"

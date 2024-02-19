@@ -5,22 +5,11 @@ import heartEmpty from "../../assets/heart-empty.png";
 import heart from "../../assets/heart.png";
 import iconStarEmpty from "./../../assets/star_empty.svg";
 import iconStarFull from "./../../assets/star_full.svg";
-import { Button, Label, LabelDetail } from "semantic-ui-react";
-import { ViewIcon } from '@chakra-ui/icons'
-import {
-  Card,
-  CardBody,
-  Image,
-  Stack,
-  Heading,
-  Text,
-  Box,
-  Flex,
-  Divider,
-  Img,
-} from "@chakra-ui/react";
+import { Button } from "semantic-ui-react";
+import { ViewIcon } from "@chakra-ui/icons";
+import { Heading, Text, Img } from "@chakra-ui/react";
 
-import "@fontsource/poppins"  
+import "@fontsource/poppins";
 
 import "./DestinationsList.css";
 
@@ -29,11 +18,7 @@ const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 function DestinationsList() {
   const [destination, setDestination] = useState([]);
   const [deletingId, setDeletingId] = useState(null);
-  //useState fav destinations
-  const [favoriteDestinationToDisplay, setFavoriteDestinationToDisplay] =
-    useState([]);
-  //isFav
-  const [isFavorite, setIsFavorite] = useState(false);
+
   //sort
   const [sortedDestination, setSortedDestination] = useState([]);
 
@@ -66,25 +51,21 @@ function DestinationsList() {
       });
   };
 
-  // Add new destination to destination list
-  const destinationAdd = (destination) => {
-    setDestination((prevDestinations) => [...prevDestinations, destination]);
+  //adding favorites
+  const addToFavorites = (id, isFavorite) => {
+    axios
+      .patch(`${API_URL}/${id}`, { isFavorite: isFavorite })
+      .then(() => {
+        const updatedDestinations = destination.map((dest) => {
+          if (dest.id === id) {
+            return { ...dest, isFavorite: isFavorite };
+          }
+          return dest;
+        });
+        setDestination(updatedDestinations);
+      })
+      .catch((error) => console.log("Error updating favorite status", error));
   };
-
-    //adding favorites
-    const addToFavorites = (id, isFavorite) => {
-        axios.patch(`${API_URL}/${id}`, { isFavorite: isFavorite })
-            .then(() => {
-                const updatedDestinations = destination.map(dest => {
-                    if (dest.id === id) {
-                        return { ...dest, isFavorite: isFavorite };
-                    }
-                    return dest;
-                });
-                setDestination(updatedDestinations);
-            })
-            .catch(error => console.log("Error updating favorite status", error));
-    }
 
   //rating
   function _rating(destination) {
@@ -139,38 +120,54 @@ function DestinationsList() {
       {destination &&
         destination.map((destination) => (
           <div key={destination.id} className="destination-card">
+            <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"}>
+              {destination.city}
+            </Heading>
 
-            <Heading fontFamily={"Poppins"} color={"#FF6A3D"}  size={"lg"}>{destination.city}</Heading>
-
-            <Img 
-            src={destination.imageURL} 
-            alt={destination.name} 
-            borderRadius={"sm"}
-            mx={"auto"}
-            display={"block"}
+            <Img
+              src={destination.imageURL}
+              alt={destination.name}
+              borderRadius={"sm"}
+              mx={"auto"}
+              display={"block"}
             />
 
+            <Text fontFamily={"Poppins"} fontSize={"xl"}>
+              <ViewIcon color="orange" /> {destination.topTip}
+            </Text>
 
-            <Text fontFamily={"Poppins"} fontSize={"xl"}><ViewIcon color='red.500' /> {destination.topTip}</Text>
+            <Button
+              color="orange"
+              onClick={() => navigate(`/destinations/${destination.id}`)}
+            >
+              Details
+            </Button>
 
-            <Button color="orange" onClick={() => navigate(`/destinations/${destination.id}`)}  >Details</Button>
-
-            <Button color="blue" onClick={() => deleteButton(destination.id)} disabled={deletingId === destination.id} exact="true"> Delete </Button>
-
-
+            <Button
+              color="blue"
+              onClick={() => deleteButton(destination.id)}
+              disabled={deletingId === destination.id}
+              exact="true"
+            >
+              {" "}
+              Delete{" "}
+            </Button>
 
             <div className="rating-icon-container">{_rating(destination)}</div>
 
-            <button onClick={() => addToFavorites(destination.id, !destination.isFavorite)}>
-                        <div className="heart-icon-container">
-                            {destination.isFavorite ? <img src={heart} className="heart-icon" alt="Fav" /> : <img src={heartEmpty} className="heart-icon" alt="Not Fav" />}
-                            </div>
-                    </button>
-        
- 
- 
-                    
-      
+            <button
+              onClick={() =>
+                addToFavorites(destination.id, !destination.isFavorite)
+              }
+            >
+              <div className="heart-icon-container">
+                {destination.isFavorite ? (
+                  <img src={heart} className="heart-icon" alt="Fav" />
+                ) : (
+                  <img src={heartEmpty} className="heart-icon" alt="Not Fav" />
+                )}
+              </div>
+            </button>
           </div>
         ))}
     </div>
