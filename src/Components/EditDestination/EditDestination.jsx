@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button } from "semantic-ui-react";
 
+import "./EditDestination.css"
+import { Heading } from "@chakra-ui/react";
+
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 function EditDestination() {
@@ -96,9 +99,9 @@ function EditDestination() {
   };
 
   return (
-    <div className="edit-container">
-      <h2>Edit your Travel Tip here!</h2>
-      <Form className="create-form" onSubmit={handleSubmit}>
+    <div className="edit">
+      <Heading fontFamily={"Poppins"} fontSize={"4xl"} color={"#FF6A3D"}>Edit your Travel Tip here!</Heading>
+      <Form className="edit-container" onSubmit={handleSubmit}>
         <Form.Field>
           <label className="form-label">City:</label>
           <input

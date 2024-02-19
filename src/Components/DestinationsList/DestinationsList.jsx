@@ -5,22 +5,11 @@ import heartEmpty from "../../assets/heart-empty.png";
 import heart from "../../assets/heart.png";
 import iconStarEmpty from "./../../assets/star_empty.svg";
 import iconStarFull from "./../../assets/star_full.svg";
-import { Button, Label, LabelDetail } from "semantic-ui-react";
-import { ViewIcon } from '@chakra-ui/icons'
-import {
-  Card,
-  CardBody,
-  Image,
-  Stack,
-  Heading,
-  Text,
-  Box,
-  Flex,
-  Divider,
-  Img,
-} from "@chakra-ui/react";
+import { Button } from "semantic-ui-react";
+import { ViewIcon } from "@chakra-ui/icons";
+import { Heading, Text, Img } from "@chakra-ui/react";
 
-import "@fontsource/poppins"  
+import "@fontsource/poppins";
 
 import "./DestinationsList.css";
 
@@ -152,29 +141,47 @@ function DestinationsList() {
       {destination &&
         destination.map((destination) => (
           <div key={destination.id} className="destination-card">
+            <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"}>
+              {destination.city}
+            </Heading>
 
-            <Heading fontFamily={"Poppins"} color={"#FF6A3D"}  size={"lg"}>{destination.city}</Heading>
-
-            <Img 
-            src={destination.imageURL} 
-            alt={destination.name} 
-            borderRadius={"sm"}
-            mx={"auto"}
-            display={"block"}
+            <Img
+              src={destination.imageURL}
+              alt={destination.name}
+              borderRadius={"sm"}
+              mx={"auto"}
+              display={"block"}
+              marginBottom={"10px"}
+              boxShadow={"md"}
             />
 
+            <Text fontFamily={"Poppins"} fontSize={"xl"}>
+              <ViewIcon color="#FF6A3D" /> {destination.topTip}
+            </Text>
 
-            <Text fontFamily={"Poppins"} fontSize={"xl"}><ViewIcon color='red.500' /> {destination.topTip}</Text>
+            <Button
+              color="orange"
+              onClick={() => navigate(`/destinations/${destination.id}`)}
+            >
+              Details
+            </Button>
 
-            <Button onClick={() => navigate(`/destinations/${destination.id}`)}  >Details</Button>
-
-            <Button onClick={() => deleteButton(destination.id)} disabled={deletingId === destination.id} exact="true"> Delete </Button>
+            <Button
+              color="blue"
+              onClick={() => deleteButton(destination.id)}
+              disabled={deletingId === destination.id}
+              exact="true"
+            >
+              {" "}
+              Delete{" "}
+            </Button>
 
             <div className="rating-icon-container">{_rating(destination)}</div>
             <button
-              onClick={() => addToFavorites(destination.id, !destination.isFavorite)
-              }  >
-
+              onClick={() =>
+                addToFavorites(destination.id, !destination.isFavorite)
+              }
+            >
               <div className="heart-icon-container">
                 {destination.isFavorite ? (
                   <img src={heart} className="heart-icon" alt="Fav" />
@@ -183,7 +190,6 @@ function DestinationsList() {
                 )}
               </div>
             </button>
-      
           </div>
         ))}
     </div>
