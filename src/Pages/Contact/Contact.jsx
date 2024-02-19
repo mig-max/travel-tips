@@ -1,6 +1,13 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  FormHelperText,
+} from "@chakra-ui/react";
 
 function Contact() {
   const [name, setName] = useState("");
@@ -95,6 +102,12 @@ function Contact() {
             }}
           />
         </Form.Field>
+
+        <FormControl>
+          <FormLabel>Email address</FormLabel>
+          <Input type="email" />
+          <FormHelperText>We'll never share your email.</FormHelperText>
+        </FormControl>
 
         <Button className="link-button" type="submit">
           Send Message

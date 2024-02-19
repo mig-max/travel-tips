@@ -1,76 +1,135 @@
-import {useParams, useNavigate} from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "semantic-ui-react";
+import { Button, Label, LabelDetail } from "semantic-ui-react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Image,
+  Stack,
+  Heading,
+  Text,
+  Box,
+  Flex,
+} from "@chakra-ui/react";
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
-function DestinationDetails () {
+function DestinationDetails() {
+  const { destinationId } = useParams();
 
+  const [destination, setDestination] = useState(API_URL[0]);
 
-    const {destinationId} = useParams();
+  const navigate = useNavigate();
 
-    const [destination, setDestination] = useState(API_URL[0]);
+  // get database with given id
+  const getDestination = () => {
+    axios
+      .get(`${API_URL}/${destinationId}`)
+      .then((response) => {
+        setDestination(response.data);
+      })
+      .catch((error) => {
+        console.log("Error getting the destination details from API", error);
+      });
+  };
 
-    const navigate = useNavigate();
+  useEffect(() => {
+    getDestination();
+  }, [destinationId]);
 
-    // get database with given id
-    const getDestination = () => {
-        axios.get(`${API_URL}/${destinationId}`)
-         .then((response) => {
-            setDestination(response.data)
-         })
-         .catch((error) => {
-            console.log("Error getting the destination details from API", error);
-         });
-    }
+  return (
+    <Card
+      direction={{ base: "column", sm: "row" }}
+      overflow="hidden"
+      variant="outline"
+      boxShadow={"md"}
+      borderRadius={"md"}
+      margin={"20px"}
+      p={4}
+    >
+     
+        <Flex flex="1" gap="2" alignItems="center" flexWrap="wrap">
+          <Image
+            boxSize={"600px"}
+            objectFit={"cover"}
+            src={destination.imageURL}
+            alt={destination.city}
+            className="destination-details-image"
+            borderRadius={"lg"}
+            mx="auto" // Added to horizontally center the image
+            display="block" // Added for consistent styling
+          />
+          <CardBody>
+            <Stack mt="6" spacing="3">
+              <Box>
+                <Heading size="lg">{destination.city}</Heading>
+                <Text>{destination.description}</Text>
+              </Box>
+              <Text py="0">
+                  Top Tip: {destination.topTip}
+                  Top Bite: {destination.topBite}
+                  Top Sight: {destination.topSight}
+                  Daily Budget: {destination.dailyBudget}€
+                  Where to Sleep: {destination.accommodation}
+                  Top neighbourhood: {destination.neighbourhood}
+                  Top park: {destination.park}
+                  Top museum: {destination.museum}
 
-    useEffect(() => {
-        getDestination();
-    }, [destinationId]);
+                {destination.isGoodForNight === true && (
+                  <Label color="blue">
+                    <LabelDetail>
+                      <span className="good-for-night">
+                        Good for night out!{" "}
+                      </span>
+                    </LabelDetail>{" "}
+                  </Label>
+                )}
 
-
-
-    return (
-
-        <div className="destination-details-card">
-        <h1 className="destination-details-title">{destination.city}</h1>
-        <img src={destination.imageURL} alt={destination.city} className="destination-details-image"/>
-
-        <p className="destination-details-description">{destination.description}</p>
-
-        <h2 className="destination-details-sub-title">Top Tip: {destination.topTip}</h2>
-        <h3 className="destination-details-sub-title">Top Bite: {destination.topBite}</h3>
-        <h3 className="destination-details-sub-title">Top Sight: {destination.topSight}</h3>
-        <h3 className="destination-details-sub-title">Daily Budget: {destination.dailyBudget}€</h3>
-        <h3 className="destination-details-sub-title">Where to Sleep: {destination.accommodation}</h3>
-
-        <p>Top neighbourhood: {destination.neighbourhood}</p>
-        <p>Top park: {destination.park}</p>
-        <p>Top museum: {destination.museum}</p> 
-
-
-
-        <h3 className="destination-details-sub-title">{destination.key}</h3>
-
-        {destination.isGoodForNight === true && (
-            <span className="good-for-night">Good for night out!</span>
-        )}
-
-        {destination.isGoodForFamily === true && (
-            <span className="good-for-family">Good for family!</span>
-        )}
-
-        <Button className="destination-details-button" onClick={() => navigate(`/destinations/${destination.id}/edit`)}>Edit</Button>
-
-        <Button className="back-button" onClick={() => navigate(-1)} exact="true">Back</Button>
-
-        <Button className="back-button" onClick={() => navigate("/")} exact="true">Home</Button>
-      
-        </div>
-
-    )
+                {destination.isGoodForFamily === true && (
+                  <Label color="green">
+                    <LabelDetail>
+                      <span className="good-for-family">Good for family!</span>
+                    </LabelDetail>{" "}
+                  </Label>
+                )}
+              </Text>
+              <Stack
+                direction={{ base: "column", md: "row" }}
+                spacing="4"
+                mt="4"
+              >
+                <Button
+                  className="destination-details-button"
+                  onClick={() =>
+                    navigate(`/destinations/${destination.id}/edit`)
+                  }
+                >
+                  Edit
+                </Button>
+                <Button
+                  className="back-button"
+                  onClick={() => navigate(-1)}
+                  exact="true"
+                >
+                  Back
+                </Button>
+                <Button
+                  className="back-button"
+                  onClick={() => navigate("/")}
+                  exact="true"
+                >
+                  Home
+                </Button>
+              </Stack>
+            </Stack>
+          </CardBody>
+        </Flex>
+    
+    </Card>
+  );
 }
-
 
 export default DestinationDetails;

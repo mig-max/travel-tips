@@ -5,18 +5,18 @@
 
 
 
-
-
-
-body {
+body, html {
 
     background-color: #f4f4f4;
     font-size: 16px;
     line-height: 1.6;
     min-height: 100vh;
     flex-direction: column;
+    font-family: "Montserrat", sans-serif;
   }
-  
+
+
+
   
   
   /* Styles for tablets and above */
