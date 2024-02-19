@@ -71,33 +71,20 @@ function DestinationsList() {
     setDestination((prevDestinations) => [...prevDestinations, destination]);
   };
 
-  //add to favorites
-  const addToFavorites = (id, isFavorite) => {
-    let newDestination = {};
-
-    for (let i = 0; i < destination.length; i++) {
-      const destinationFav = destination[i];
-
-      if (destinationFav.id === id) {
-        newDestination = destinationFav;
-        break;
-      }
+    //adding favorites
+    const addToFavorites = (id, isFavorite) => {
+        axios.patch(`${API_URL}/${id}`, { isFavorite: isFavorite })
+            .then(() => {
+                const updatedDestinations = destination.map(dest => {
+                    if (dest.id === id) {
+                        return { ...dest, isFavorite: isFavorite };
+                    }
+                    return dest;
+                });
+                setDestination(updatedDestinations);
+            })
+            .catch(error => console.log("Error updating favorite status", error));
     }
-    newDestination.isFavorite = isFavorite;
-    setFavoriteDestinationToDisplay([
-      newDestination,
-      ...favoriteDestinationToDisplay,
-    ]);
-    //setIsFavorite(true);
-  };
-
-  //remove from favorites
-  const removeFromFavorites = (id) => {
-    const newList = favoriteDestinationToDisplay.filter(
-      (element) => element.id !== id
-    );
-    setFavoriteDestinationToDisplay(newList);
-  };
 
   //rating
   function _rating(destination) {
@@ -171,18 +158,14 @@ function DestinationsList() {
             <Button onClick={() => deleteButton(destination.id)} disabled={deletingId === destination.id} exact="true"> Delete </Button>
 
             <div className="rating-icon-container">{_rating(destination)}</div>
-            <button
-              onClick={() => addToFavorites(destination.id, !destination.isFavorite)
-              }  >
+        
 
-              <div className="heart-icon-container">
-                {destination.isFavorite ? (
-                  <img src={heart} className="heart-icon" alt="Fav" />
-                ) : (
-                  <img src={heartEmpty} className="heart-icon" alt="Not Fav" />
-                )}
-              </div>
-            </button>
+            <h2>Favorite: {destination.isFavorite ? 'Yes' : 'No'} </h2>
+                    <button onClick={() => addToFavorites(destination.id, !destination.isFavorite)}>
+                        <div className="heart-icon-container">
+                            {destination.isFavorite ? <img src={heart} className="heart-icon" alt="Fav" /> : <img src={heartEmpty} className="heart-icon" alt="Not Fav" />}
+                            </div>
+                    </button>
       
           </div>
         ))}
