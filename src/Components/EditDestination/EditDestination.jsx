@@ -99,185 +99,183 @@ function EditDestination() {
     setDestinationData({ ...destinationData, [name]: inputValue });
   };
 
-  return (    
-  <div className="content-container">
-  {/* To ensure that there's enough content to make the page scrollable */}
-    <div className="edit">
-      <Heading
-        className="edit-header"
-        fontFamily={"Poppins"}
-        fontSize={"4xl"}
-        color={"#FF6A3D"}
-      >
-        Edit your Travel Tip here!
-      </Heading>
-      <Form className="edit-container" onSubmit={handleSubmit}>
-        <Form.Field>
-          <label className="form-label">City:</label>
-          <input
-            name="city"
-            type="text"
-            placeholder="City"
-            value={destinationData.city}
-            disabled={destinationData.city !== ""}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+  return (
+    <div className="content-container">
+      {/* To ensure that there's enough content to make the page scrollable */}
+      <div className="edit">
+        <Heading
+          className="edit-header"
+          fontFamily={"Poppins"}
+          fontSize={"4xl"}
+          color={"#FF6A3D"}
+        >  Edit your Travel Tip here!
+        </Heading>
+         
+        <Form className="edit-container" onSubmit={handleSubmit}>
+          <Form.Field>
+            <label className="form-label">City:</label>
+            <input
+              name="city"
+              type="text"
+              placeholder="City"
+              value={destinationData.city}
+              disabled={destinationData.city !== ""}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Top Tip:</label>
-          <input
-            name="topTip"
-            type="text"
-            placeholder="Top Tip"
-            value={destinationData.topTip}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Top Tip:</label>
+            <input
+              name="topTip"
+              type="text"
+              placeholder="Top Tip"
+              value={destinationData.topTip}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Top Bite:</label>
-          <input
-            name="topBite"
-            type="text"
-            placeholder="Top Bite"
-            value={destinationData.topBite}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Top Bite:</label>
+            <input
+              name="topBite"
+              type="text"
+              placeholder="Top Bite"
+              value={destinationData.topBite}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Top Sight:</label>
-          <input
-            name="topSight"
-            type="text"
-            placeholder="Top Sight"
-            value={destinationData.topSight}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Top Sight:</label>
+            <input
+              name="topSight"
+              type="text"
+              placeholder="Top Sight"
+              value={destinationData.topSight}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Where to sleep:</label>
-          <input
-            name="accommodation"
-            type="text"
-            placeholder="Accomodation"
-            value={destinationData.accommodation}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Where to sleep:</label>
+            <input
+              name="accommodation"
+              type="text"
+              placeholder="Accomodation"
+              value={destinationData.accommodation}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Daily Budget:</label>
-          <input
-            name="dailyBudget"
-            type="number"
-            placeholder="Daily Budget"
-            value={destinationData.dailyBudget}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Daily Budget:</label>
+            <input
+              name="dailyBudget"
+              type="number"
+              placeholder="Daily Budget"
+              value={destinationData.dailyBudget}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Image URL:</label>
-          <input
-            name="imageURL"
-            type="url"
-            placeholder="Insert image URL"
-            value={destinationData.imageURL}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Image URL:</label>
+            <input
+              name="imageURL"
+              type="url"
+              placeholder="Insert image URL"
+              value={destinationData.imageURL}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Top neighbourhood: </label>
-          <input
-            className="form-input"
-            type="text"
-            name="neighbourhood"
-            placeholder="Enter your favorite neighbourhood"
-            value={destinationData.neighbourhood}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Top neighbourhood: </label>
+            <input
+              className="form-input"
+              type="text"
+              name="neighbourhood"
+              placeholder="Enter your favorite neighbourhood"
+              value={destinationData.neighbourhood}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Top park:</label>
-          <input
-            className="form-input"
-            type="text"
-            name="park"
-            placeholder="Enter your favorite park"
-            value={destinationData.park}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Top park:</label>
+            <input
+              className="form-input"
+              type="text"
+              name="park"
+              placeholder="Enter your favorite park"
+              value={destinationData.park}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Top museum:</label>
-          <input
-            className="form-input"
-            type="text"
-            name="museum"
-            placeholder="Enter your favorite museum"
-            value={destinationData.museum}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Top museum:</label>
+            <input
+              className="form-input"
+              type="text"
+              name="museum"
+              placeholder="Enter your favorite museum"
+              value={destinationData.museum}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Good For Night Out:</label>
-          <input
-            type="checkbox"
-            name="isGoodForNight"
-            checked={destinationData.isGoodForNight}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Good For Night Out:</label>
+            <input
+              type="checkbox"
+              name="isGoodForNight"
+              checked={destinationData.isGoodForNight}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Good For Families:</label>
-          <input
-            type="checkbox"
-            name="isGoodForFamily"
-            checked={destinationData.isGoodForFamily}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
+          <Form.Field>
+            <label className="form-label">Good For Families:</label>
+            <input
+              type="checkbox"
+              name="isGoodForFamily"
+              checked={destinationData.isGoodForFamily}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Description:</label>
-          <textarea
-            name="description"
-            type="text"
-            placeholder="Description"
-            value={destinationData.description}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-      </Form>
+          <Form.Field>
+            <label className="form-label">Description:</label>
+            <textarea
+              name="description"
+              type="text"
+              placeholder="Description"
+              value={destinationData.description}
+              onChange={handleInputChange}
+            />
+          </Form.Field>
 
-      <Form className="edit-container" onSubmit={handleSubmit}>
-        {/* Form fields */}
-        <Button color="orange" type="submit" exact="true">
-          Save
-        </Button>
+        </Form>
 
-        <Button
-          color="blue"
-          onClick={() => navigate(`/destinations/${destinationId}`)}
-          exact="true"
-        >
-          Back
-        </Button>
+        <Form className="button-container" onSubmit={handleSubmit}>
+          <Button color="orange" type="submit" exact="true">
+            Update
+          </Button>
 
-        <Button color="blue" onClick={() => navigate("/")} exact="true">
-          Home
-        </Button>
-      </Form>
+          <Button
+            color="blue"
+            onClick={() => navigate(`/destinations/${destinationId}`)}
+            exact="true"
+          >
+            Back
+          </Button>
 
-  
+          <Button color="blue" onClick={() => navigate("/")} exact="true">
+            Home
+          </Button>
+        </Form>
       </div>
     </div>
   );

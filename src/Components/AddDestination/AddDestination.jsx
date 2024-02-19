@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form } from "semantic-ui-react";
 import "./AddDestination.css"
+import { Heading } from "@chakra-ui/react";
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
@@ -69,15 +70,22 @@ function AddDestination() {
   };
 
   return (
-    <div className="add-destination">
-      <h1>Add a new destination</h1>
+    <div className="content-container">
+  {/* To ensure that there's enough content to make the page scrollable */}
+    <div className="edit">
+    <Heading
+     className="edit-header"
+     fontFamily={"Poppins"}
+     fontSize={"4xl"}
+      color={"#FF6A3D"} 
+      > Add a new destination here
+      </Heading>
 
-      <Form className="create-form" onSubmit={handleSubmit}>
+      <Form className="edit-container" onSubmit={handleSubmit}>
         <Form.Field>
           <label className="form-label">City:</label>
           <input
-            required
-            name="city"
+            name="city" required="required"
             type="text"
             placeholder="City"
             value={city}
@@ -90,6 +98,7 @@ function AddDestination() {
         <Form.Field>
           <label className="form-label">Description:</label>
           <textarea
+            required="required"
             name="description"
             type="text"
             placeholder="Description"
@@ -166,6 +175,19 @@ function AddDestination() {
         </Form.Field>
 
         <Form.Field>
+          <label className="form-label">Image URL:</label>
+          <input
+            name="imageURL"
+            type="url"
+            placeholder="Insert image URL"
+            value={imageURL}
+            onChange={(event) => {
+              setImageURL(event.target.value);
+            }}
+          />
+        </Form.Field>
+
+        <Form.Field>
           <Checkbox
             className="form-label"
             label="Good For Night Out:"
@@ -189,21 +211,15 @@ function AddDestination() {
           />
         </Form.Field>
 
-        <Form.Field>
-          <label className="form-label">Image URL:</label>
-          <input
-            name="imageURL"
-            type="url"
-            placeholder="Insert image URL"
-            value={imageURL}
-            onChange={(event) => {
-              setImageURL(event.target.value);
-            }}
-          />
-        </Form.Field>
+        </Form>
 
-        <Button type="submit" exact="true">Add destination</Button>
+        <Form className="button-container" onSubmit={handleSubmit}>
+
+        <Button color="orange" type="submit" exact="true">Add destination</Button>
+
+        <Button color="blue" onClick={() => navigate("/")} exact="true">Home</Button>
       </Form>
+    </div>
     </div>
   );
 }
