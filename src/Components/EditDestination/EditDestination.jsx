@@ -181,26 +181,6 @@ function EditDestination() {
         </Form.Field>
 
         <Form.Field>
-          <label className="form-label">Good For Night Out:</label>
-          <input
-            type="checkbox"
-            name="isGoodForNight"
-            checked={destinationData.isGoodForNight}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-
-        <Form.Field>
-          <label className="form-label">Good For Families:</label>
-          <input
-            type="checkbox"
-            name="isGoodForFamily"
-            checked={destinationData.isGoodForFamily}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-
-        <Form.Field>
           <label className="form-label">Image URL:</label>
           <input
             name="imageURL"
@@ -247,21 +227,39 @@ function EditDestination() {
           />
         </Form.Field>
 
-        <Button type="submit" exact="true">
+        <Form.Field>
+          <label className="form-label">Good For Night Out:</label>
+          <input
+            type="checkbox"
+            name="isGoodForNight"
+            checked={destinationData.isGoodForNight}
+            onChange={handleInputChange}
+          />
+        </Form.Field>
+
+        <Form.Field>
+          <label className="form-label">Good For Families:</label>
+          <input
+            type="checkbox"
+            name="isGoodForFamily"
+            checked={destinationData.isGoodForFamily}
+            onChange={handleInputChange}
+          />
+        </Form.Field>
+
+
+        <Button color="orange" type="submit" exact="true">
           Save
         </Button>
 
-        <Button onClick={() => navigate(`/destinations/${destinationId}`)} exact="true">
+        <Button color="blue" onClick={() => navigate(`/destinations/${destinationId}`)} exact="true">
           Back
         </Button>
 
-        <Button
-          className="back-button"
-          onClick={() => navigate("/")}
-          exact="true"
-        >
-          Home
+        <Button color="blue" className="back-button"  onClick={() => navigate("/")}  exact="true">
+        Home
         </Button>
+
       </Form>
     </div>
   );

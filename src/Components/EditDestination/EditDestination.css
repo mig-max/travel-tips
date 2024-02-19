@@ -1,0 +1,39 @@
+.edit {
+    text-align: center;
+    margin: 30px auto;
+
+}
+.edit-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.button-row {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+
