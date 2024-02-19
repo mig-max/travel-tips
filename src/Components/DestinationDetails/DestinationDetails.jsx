@@ -4,16 +4,16 @@ import axios from "axios";
 import { Button, Label, LabelDetail } from "semantic-ui-react";
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Image,
   Stack,
   Heading,
   Text,
   Box,
   Flex,
+  Divider,
 } from "@chakra-ui/react";
+import "@fontsource/poppins"
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
@@ -50,8 +50,7 @@ function DestinationDetails() {
       margin={"20px"}
       p={4}
     >
-     
-        <Flex flex="1" gap="2" alignItems="center" flexWrap="wrap">
+        <Flex flex="1" gap="1" alignItems="center" flexWrap="wrap" >
           <Image
             boxSize={"600px"}
             objectFit={"cover"}
@@ -59,40 +58,44 @@ function DestinationDetails() {
             alt={destination.city}
             className="destination-details-image"
             borderRadius={"lg"}
-            mx="auto" // Added to horizontally center the image
-            display="block" // Added for consistent styling
+            mx={"auto"}
+            display={"block"}
           />
+        </Flex>
           <CardBody>
             <Stack mt="6" spacing="3">
               <Box>
-                <Heading size="lg">{destination.city}</Heading>
-                <Text>{destination.description}</Text>
+                <Heading fontFamily={"Poppins"} fontSize={"5xl"} color={"#FF6A3D"}>{destination.city}</Heading>
+                <Text fontFamily={"Poppins"} fontSize={"xl"}>{destination.description}</Text>
               </Box>
-              <Text py="0">
-                  Top Tip: {destination.topTip}
-                  Top Bite: {destination.topBite}
-                  Top Sight: {destination.topSight}
-                  Daily Budget: {destination.dailyBudget}€
-                  Where to Sleep: {destination.accommodation}
-                  Top neighbourhood: {destination.neighbourhood}
-                  Top park: {destination.park}
-                  Top museum: {destination.museum}
+              <Text fontFamily={"Poppins"} fontSize={"xl"} lineHeight={"32px"}>
+              <br/><b>Top Tip:</b>  {destination.topTip}
+              <br/><b> Top Bite:</b> {destination.topBite}
+              <br/><b>Top Sight:</b> {destination.topSight}
+              <br/><b>Daily Budget:</b> {destination.dailyBudget}€
+              <br/><b>Where to Sleep:</b> {destination.accommodation}
+              <br/><b>Top neighbourhood:</b> {destination.neighbourhood}
+              <br/><b>Top park:</b> {destination.park}
+              <br/><b>Top museum:</b> {destination.museum}
+
+              <Divider margin={"10px"}/>
 
                 {destination.isGoodForNight === true && (
                   <Label color="blue">
                     <LabelDetail>
                       <span className="good-for-night">
-                        Good for night out!{" "}
+                      <strong>Good for night out!</strong>
                       </span>
-                    </LabelDetail>{" "}
+                    </LabelDetail>
                   </Label>
                 )}
 
                 {destination.isGoodForFamily === true && (
                   <Label color="green">
                     <LabelDetail>
-                      <span className="good-for-family">Good for family!</span>
-                    </LabelDetail>{" "}
+                      <span className="good-for-family">
+                      <strong>Good for family!</strong></span>
+                    </LabelDetail>
                   </Label>
                 )}
               </Text>
@@ -101,33 +104,20 @@ function DestinationDetails() {
                 spacing="4"
                 mt="4"
               >
-                <Button
-                  className="destination-details-button"
-                  onClick={() =>
-                    navigate(`/destinations/${destination.id}/edit`)
-                  }
-                >
+                <Button color="orange" onClick={() => navigate(`/destinations/${destination.id}/edit`)} exact="true" >
                   Edit
                 </Button>
-                <Button
-                  className="back-button"
-                  onClick={() => navigate(-1)}
-                  exact="true"
-                >
-                  Back
-                </Button>
-                <Button
-                  className="back-button"
-                  onClick={() => navigate("/")}
-                  exact="true"
-                >
+
+                <Button color="blue" onClick={() => navigate("/")} exact="true">
                   Home
+                </Button>
+
+                <Button color="blue" onClick={() => navigate(-1)} exact="true" >
+                  Back
                 </Button>
               </Stack>
             </Stack>
           </CardBody>
-        </Flex>
-    
     </Card>
   );
 }

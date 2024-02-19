@@ -1,11 +1,26 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Button, List } from "semantic-ui-react";
 import heartEmpty from "../../assets/heart-empty.png";
 import heart from "../../assets/heart.png";
 import iconStarEmpty from "./../../assets/star_empty.svg";
 import iconStarFull from "./../../assets/star_full.svg";
+import { Button, Label, LabelDetail } from "semantic-ui-react";
+import { ViewIcon } from '@chakra-ui/icons'
+import {
+  Card,
+  CardBody,
+  Image,
+  Stack,
+  Heading,
+  Text,
+  Box,
+  Flex,
+  Divider,
+  Img,
+} from "@chakra-ui/react";
+
+import "@fontsource/poppins"  
 
 import "./DestinationsList.css";
 
@@ -137,9 +152,19 @@ function DestinationsList() {
       {destination &&
         destination.map((destination) => (
           <div key={destination.id} className="destination-card">
-            <h1>{destination.city}</h1>
-            <img src={destination.imageURL} alt={destination.name} />
-            <h2>Tip: {destination.topTip}</h2>
+
+            <Heading fontFamily={"Poppins"} color={"#FF6A3D"}  size={"lg"}>{destination.city}</Heading>
+
+            <Img 
+            src={destination.imageURL} 
+            alt={destination.name} 
+            borderRadius={"sm"}
+            mx={"auto"}
+            display={"block"}
+            />
+
+
+            <Text fontFamily={"Poppins"} fontSize={"xl"}><ViewIcon color='red.500' /> {destination.topTip}</Text>
 
             <Button onClick={() => navigate(`/destinations/${destination.id}`)}  >Details</Button>
 
@@ -158,6 +183,7 @@ function DestinationsList() {
                 )}
               </div>
             </button>
+      
           </div>
         ))}
     </div>
