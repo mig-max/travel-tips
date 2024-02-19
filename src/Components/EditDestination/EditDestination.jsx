@@ -268,13 +268,10 @@ function EditDestination() {
             color="blue"
             onClick={() => navigate(`/destinations/${destinationId}`)}
             exact="true"
-          >
-            Back
-          </Button>
+          >  Back </Button>
 
-          <Button color="blue" onClick={() => navigate("/")} exact="true">
-            Home
-          </Button>
+          <Button color="blue" onClick={() => navigate("/")} exact="true"> Home   </Button>
+
         </Form>
       </div>
     </div>
