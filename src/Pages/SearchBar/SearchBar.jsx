@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Grid, GridRow, Search } from "semantic-ui-react";
+import { Grid, Search } from "semantic-ui-react";
 import { Heading, Image } from "@chakra-ui/react";
 import "./SearchBar.css";
 import "@fontsource/poppins"
@@ -63,36 +64,39 @@ function SearchBar() {
 
   return (
     <div className="search-bar-container">
-      <Image
-        objectFit="cover"
-        src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=3431&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Chakra UI"
-      />
-      <div className="content-container">
-        <Grid>
-          <Heading
-            className="search-bar"
-            fontFamily="Poppins"
-            fontSize="3xl"
-            color="#FF6A3D"
-          >
-            Discover what's out there.
-          </Heading>
-          <GridRow width={60}>
-            <Search
-              className="search-bar"
-              size="huge"
-              loading={loading}
-              placeholder="Search for a city here..."
-              onSearchChange={handleSearch}
-              onResultSelect={handleResultSelect}
-              results={results}
-              value={value}
-              noResultsMessage="No cities found"
-              fontFamily="Poppins"
-            />
-          </GridRow>
-        </Grid>
+      <div className="search-bar-top">
+        <Image
+          objectFit="cover"
+          src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=3431&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="travel"
+          sizes="(100vw, 100vh)"
+        />
+        <div className="content">
+          <Grid>
+            <div className="search-bar-middle">
+              <Heading
+                className="search-bar"
+                fontFamily="Poppins"
+                fontSize="3xl"
+                color="white"
+              >Discover what's out there.  </Heading>
+                
+            
+              <Search
+                className="search-bar"
+                size="huge"
+                loading={loading}
+                placeholder="Search for a city here..."
+                onSearchChange={handleSearch}
+                onResultSelect={handleResultSelect}
+                results={results}
+                value={value}
+                noResultsMessage="No cities found"
+                fontFamily="Poppins"
+              />
+            </div>
+          </Grid>
+        </div>
       </div>
     </div>
   );

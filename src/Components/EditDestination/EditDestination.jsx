@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Form, Button } from "semantic-ui-react";
-
-import "./EditDestination.css";
+import { Form, Button, Input, TextArea } from "semantic-ui-react";
 import { Heading } from "@chakra-ui/react";
+import "./EditDestination.css";
+
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
@@ -111,10 +111,11 @@ function EditDestination() {
         >  Edit your Travel Tip here!
         </Heading>
          
-        <Form className="edit-container" onSubmit={handleSubmit}>
+        <Form fontFamily={"Poppins"} fontSize={"xl"} className="edit-container" onSubmit={handleSubmit}>
+        
           <Form.Field>
             <label className="form-label">City:</label>
-            <input
+            <Input
               name="city"
               type="text"
               placeholder="City"
@@ -126,7 +127,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Top Tip:</label>
-            <input
+            <Input
               name="topTip"
               type="text"
               placeholder="Top Tip"
@@ -137,7 +138,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Top Bite:</label>
-            <input
+            <Input
               name="topBite"
               type="text"
               placeholder="Top Bite"
@@ -148,7 +149,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Top Sight:</label>
-            <input
+            <Input
               name="topSight"
               type="text"
               placeholder="Top Sight"
@@ -159,7 +160,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Where to sleep:</label>
-            <input
+            <Input
               name="accommodation"
               type="text"
               placeholder="Accomodation"
@@ -170,7 +171,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Daily Budget:</label>
-            <input
+            <Input
               name="dailyBudget"
               type="number"
               placeholder="Daily Budget"
@@ -181,7 +182,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Image URL:</label>
-            <input
+            <Input
               name="imageURL"
               type="url"
               placeholder="Insert image URL"
@@ -192,7 +193,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Top neighbourhood: </label>
-            <input
+            <Input
               className="form-input"
               type="text"
               name="neighbourhood"
@@ -204,7 +205,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Top park:</label>
-            <input
+            <Input
               className="form-input"
               type="text"
               name="park"
@@ -216,7 +217,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Top museum:</label>
-            <input
+            <Input
               className="form-input"
               type="text"
               name="museum"
@@ -228,7 +229,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Good For Night Out:</label>
-            <input
+            <Input
               type="checkbox"
               name="isGoodForNight"
               checked={destinationData.isGoodForNight}
@@ -238,7 +239,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Good For Families:</label>
-            <input
+            <Input
               type="checkbox"
               name="isGoodForFamily"
               checked={destinationData.isGoodForFamily}
@@ -248,7 +249,7 @@ function EditDestination() {
 
           <Form.Field>
             <label className="form-label">Description:</label>
-            <textarea
+            <TextArea
               name="description"
               type="text"
               placeholder="Description"

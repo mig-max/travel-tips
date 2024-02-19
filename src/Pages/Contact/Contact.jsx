@@ -1,13 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormHelperText,
-} from "@chakra-ui/react";
+import {Input, Heading, Textarea } from "@chakra-ui/react";
+
+import "./Contact.css"
 
 function Contact() {
   const [name, setName] = useState("");
@@ -40,13 +37,23 @@ function Contact() {
   };
 
   return (
-    <div className="message-container">
-      <h1>Leave your message here!</h1>
+    <div className="content-container">
+    {/* To ensure that there's enough content to make the page scrollable */}
 
-      <Form onSubmit={handleSubmit} className="house-container">
+    <div className="edit">
+    <Heading
+     className="edit-header"
+     fontFamily={"Poppins"}
+     fontSize={"4xl"}
+      color={"#FF6A3D"} 
+      > Leave your message here
+      </Heading>
+
+
+      <Form fontFamily={"Poppins"}  fontSize={"xl"} className="edit-container" onSubmit={handleSubmit}>
         <Form.Field>
           <label className="form-label">Name:</label>
-          <input
+          <Input
             className="form-input"
             type="text"
             name="name"
@@ -60,7 +67,7 @@ function Contact() {
 
         <Form.Field>
           <label className="form-label">Phone:</label>
-          <input
+          <Input
             className="form-input"
             type="text"
             name="phone"
@@ -74,7 +81,7 @@ function Contact() {
 
         <Form.Field>
           <label className="form-label">Email:</label>
-          <input
+          <Input
             className="form-input"
             type="text"
             name="name"
@@ -88,8 +95,7 @@ function Contact() {
 
         <Form.Field>
           <label className="form-label">Message:</label>
-
-          <textarea
+          <Textarea
             className="form-input"
             type="text"
             name="message"
@@ -102,21 +108,16 @@ function Contact() {
             }}
           />
         </Form.Field>
+        </Form>
 
-        <FormControl>
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" />
-          <FormHelperText>We'll never share your email.</FormHelperText>
-        </FormControl>
-
-        <Button className="link-button" type="submit">
+        <Form className="button-container" onSubmit={handleSubmit}>
+        <Button color="orange" className="link-button" type="submit">
           Send Message
         </Button>
 
-        <Link to="/" className="link-button">
-          Back to Home Page
-        </Link>
+        <Button color="blue" onClick={() => navigate("/")} exact="true">Home</Button>    
       </Form>
+    </div>
     </div>
   );
 }

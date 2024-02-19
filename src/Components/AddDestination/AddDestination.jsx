@@ -3,8 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form, Input } from "semantic-ui-react";
+import { Heading, Textarea } from "@chakra-ui/react";
 import "./AddDestination.css"
-import { Heading } from "@chakra-ui/react";
+
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
@@ -104,7 +105,7 @@ function AddDestination() {
 
         <Form.Field required>
           <label className="form-label">Description:</label>
-          <textarea
+          <Textarea
             name="description"
             type="text"
             placeholder="Description"
