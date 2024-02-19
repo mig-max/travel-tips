@@ -41,6 +41,8 @@ function DestinationDetails() {
   }, [destinationId]);
 
   return (
+    <div className="content-container">
+    {/* To ensure that there's enough content to make the page scrollable */}
     <Card
       direction={{ base: "column", sm: "row" }}
       overflow="hidden"
@@ -119,6 +121,8 @@ function DestinationDetails() {
             </Stack>
           </CardBody>
     </Card>
+    </div>
+    
   );
 }
 

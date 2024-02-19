@@ -153,19 +153,23 @@ function DestinationsList() {
 
             <Text fontFamily={"Poppins"} fontSize={"xl"}><ViewIcon color='red.500' /> {destination.topTip}</Text>
 
-            <Button onClick={() => navigate(`/destinations/${destination.id}`)}  >Details</Button>
+            <Button color="orange" onClick={() => navigate(`/destinations/${destination.id}`)}  >Details</Button>
 
-            <Button onClick={() => deleteButton(destination.id)} disabled={deletingId === destination.id} exact="true"> Delete </Button>
+            <Button color="blue" onClick={() => deleteButton(destination.id)} disabled={deletingId === destination.id} exact="true"> Delete </Button>
+
+
 
             <div className="rating-icon-container">{_rating(destination)}</div>
-        
 
-            <h2>Favorite: {destination.isFavorite ? 'Yes' : 'No'} </h2>
-                    <button onClick={() => addToFavorites(destination.id, !destination.isFavorite)}>
+            <button onClick={() => addToFavorites(destination.id, !destination.isFavorite)}>
                         <div className="heart-icon-container">
                             {destination.isFavorite ? <img src={heart} className="heart-icon" alt="Fav" /> : <img src={heartEmpty} className="heart-icon" alt="Not Fav" />}
                             </div>
                     </button>
+        
+ 
+ 
+                    
       
           </div>
         ))}

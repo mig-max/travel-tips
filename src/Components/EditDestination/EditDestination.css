@@ -1,7 +1,12 @@
 .edit {
     text-align: center;
-    margin: 30px auto;
+  
 
+}
+
+.edit-header {
+    margin: 30px;
+    padding: 10px;
 }
 .edit-container {
     max-width: 500px;
@@ -28,12 +33,14 @@
 
 textarea {
   height: 100px;
+  width: auto;
 }
 
-.button-row {
-  grid-column: span 2;
-  display: flex;
-  justify-content: space-between;
-}
-
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+    gap: 20px;
+  }
+  
 

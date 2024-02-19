@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button } from "semantic-ui-react";
 
-import "./EditDestination.css"
+import "./EditDestination.css";
 import { Heading } from "@chakra-ui/react";
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
@@ -62,10 +62,11 @@ function EditDestination() {
           }, {}),
         };
 
-        axios  // Update the destination in the database
+        axios // Update the destination in the database
           .put(`${API_URL}/${destinationId}`, updatedDestinationData)
           .then((response) => {
             console.log("Destination updated successfully", response);
+            alert("Destination updated successfully");
             goBack();
           })
           .catch((error) => {
@@ -98,9 +99,18 @@ function EditDestination() {
     setDestinationData({ ...destinationData, [name]: inputValue });
   };
 
-  return (
+  return (    
+  <div className="content-container">
+  {/* To ensure that there's enough content to make the page scrollable */}
     <div className="edit">
-      <Heading fontFamily={"Poppins"} fontSize={"4xl"} color={"#FF6A3D"}>Edit your Travel Tip here!</Heading>
+      <Heading
+        className="edit-header"
+        fontFamily={"Poppins"}
+        fontSize={"4xl"}
+        color={"#FF6A3D"}
+      >
+        Edit your Travel Tip here!
+      </Heading>
       <Form className="edit-container" onSubmit={handleSubmit}>
         <Form.Field>
           <label className="form-label">City:</label>
@@ -110,17 +120,6 @@ function EditDestination() {
             placeholder="City"
             value={destinationData.city}
             disabled={destinationData.city !== ""}
-            onChange={handleInputChange}
-          />
-        </Form.Field>
-
-        <Form.Field>
-          <label className="form-label">Description:</label>
-          <textarea
-            name="description"
-            type="text"
-            placeholder="Description"
-            value={destinationData.description}
             onChange={handleInputChange}
           />
         </Form.Field>
@@ -247,20 +246,39 @@ function EditDestination() {
           />
         </Form.Field>
 
+        <Form.Field>
+          <label className="form-label">Description:</label>
+          <textarea
+            name="description"
+            type="text"
+            placeholder="Description"
+            value={destinationData.description}
+            onChange={handleInputChange}
+          />
+        </Form.Field>
+      </Form>
 
+      <Form className="edit-container" onSubmit={handleSubmit}>
+        {/* Form fields */}
         <Button color="orange" type="submit" exact="true">
           Save
         </Button>
 
-        <Button color="blue" onClick={() => navigate(`/destinations/${destinationId}`)} exact="true">
+        <Button
+          color="blue"
+          onClick={() => navigate(`/destinations/${destinationId}`)}
+          exact="true"
+        >
           Back
         </Button>
 
-        <Button color="blue" className="back-button"  onClick={() => navigate("/")}  exact="true">
-        Home
+        <Button color="blue" onClick={() => navigate("/")} exact="true">
+          Home
         </Button>
-
       </Form>
+
+  
+      </div>
     </div>
   );
 }
