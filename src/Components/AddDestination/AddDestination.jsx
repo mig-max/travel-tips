@@ -2,7 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { Button, Checkbox, Form, Input } from "semantic-ui-react";
 import "./AddDestination.css"
 import { Heading } from "@chakra-ui/react";
 
@@ -26,6 +26,12 @@ function AddDestination() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+     // Check if any required field is empty
+     if (!city || !description) {
+      alert("Please fill in all required fields.");
+      return; // Stop form submission
+    }
 
     const newDestination = {
       id: Math.floor(Math.random() * 100), // temporary unique ID
@@ -81,11 +87,11 @@ function AddDestination() {
       > Add a new destination here
       </Heading>
 
-      <Form className="edit-container" onSubmit={handleSubmit}>
-        <Form.Field>
+      <Form fontFamily={"Poppins"}  fontSize={"xl"} className="edit-container" onSubmit={handleSubmit}>
+        <Form.Field required>
           <label className="form-label">City:</label>
           <input
-            name="city" required="required"
+            name="city" 
             type="text"
             placeholder="City"
             value={city}
@@ -95,10 +101,9 @@ function AddDestination() {
           />
         </Form.Field>
 
-        <Form.Field>
+        <Form.Field required>
           <label className="form-label">Description:</label>
           <textarea
-            required="required"
             name="description"
             type="text"
             placeholder="Description"

@@ -158,8 +158,3 @@ function Favorites() {
 }
 
 export default Favorites;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> refs/remotes/origin/main
