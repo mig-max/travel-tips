@@ -93,6 +93,8 @@ function SearchBar() {
                 value={value}
                 noResultsMessage="No cities found"
                 fontFamily="Poppins"
+                
+                
               />
             </div>
           </Grid>

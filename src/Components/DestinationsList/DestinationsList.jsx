@@ -67,30 +67,27 @@ function DestinationsList() {
       .catch((error) => console.log("Error updating favorite status", error));
   };
 
-//rating
-    function sortByRating(data) {
-      return data.sort((a, b) => b.rating - a.rating);
-    }
+  //rating
+  function sortByRating(data) {
+    return data.sort((a, b) => b.rating - a.rating);
+  }
 
-    function updateRating(destinationId, newRating) {
-      axios
-        .patch(`${API_URL}/${destinationId}`, { rating: newRating })
-        .then(() => {
-          const updatedDestinations = destination.map((dest) => {
-            if (dest.id === destinationId) {
-              return { ...dest, rating: newRating };
-            }
-            return dest;
-          });
-          setDestination(updatedDestinations);
-          setSortedDestination(sortByRating(updatedDestinations));
-        })
-        .catch((error) => console.log("Error updating rating", error));
-    }
+  function updateRating(destinationId, newRating) {
+    axios
+      .patch(`${API_URL}/${destinationId}`, { rating: newRating })
+      .then(() => {
+        const updatedDestinations = destination.map((dest) => {
+          if (dest.id === destinationId) {
+            return { ...dest, rating: newRating };
+          }
+          return dest;
+        });
+        setDestination(updatedDestinations);
+        setSortedDestination(sortByRating(updatedDestinations));
+      })
+      .catch((error) => console.log("Error updating rating", error));
+  }
 
-        
-
-  
   function _rating(destination) {
     const elements = Array.from({ length: 5 }, (v, i) => (
       <button
@@ -109,58 +106,60 @@ function DestinationsList() {
     ));
 
     return <>{elements}</>;
-
+  }
 
   return (
-    <div className="destinations-list" key={destination.id}>
+    <div className="destinations-list">
       {destination &&
-        destination.map((destination) => (
-          <div key={destination.id} className="destination-card">
+        destination.map((dest) => (
+          <div key={dest.id} className="destination-card">
             <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"}>
-              {destination.city}
+              {dest.city}
             </Heading>
 
             <Img
-              src={destination.imageURL}
-              alt={destination.name}
+              src={dest.imageURL}
+              alt={dest.name}
               borderRadius={"sm"}
               mx={"auto"}
               display={"block"}
             />
 
             <Text fontFamily={"Poppins"} fontSize={"xl"}>
-              <ViewIcon color="orange" /> {destination.topTip}
+              <ViewIcon color="orange" /> {dest.topTip}
             </Text>
 
             <Button
               color="orange"
-              onClick={() => navigate(`/destinations/${destination.id}`)}
+              onClick={() => navigate(`/destinations/${dest.id}`)}
             >
               Details
             </Button>
 
             <Button
               color="blue"
-              onClick={() => deleteButton(destination.id)}
-              disabled={deletingId === destination.id}
+              onClick={() => deleteButton(dest.id)}
+              disabled={deletingId === dest.id}
               exact="true"
             >
               {" "}
               Delete{" "}
             </Button>
 
-            <div className="rating-icon-container">{_rating(destination)}</div>
+            <div className="rating-icon-container">{_rating(dest)}</div>
 
             <button
-              onClick={() =>
-                addToFavorites(destination.id, !destination.isFavorite)
-              }
+              onClick={() => addToFavorites(dest.id, !dest.isFavorite)}
             >
               <div className="heart-icon-container">
-                {destination.isFavorite ? (
+                {dest.isFavorite ? (
                   <img src={heart} className="heart-icon" alt="Fav" />
                 ) : (
-                  <img src={heartEmpty} className="heart-icon" alt="Not Fav" />
+                  <img
+                    src={heartEmpty}
+                    className="heart-icon"
+                    alt="Not Fav"
+                  />
                 )}
               </div>
             </button>
