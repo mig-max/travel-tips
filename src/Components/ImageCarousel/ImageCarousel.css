@@ -1,17 +1,14 @@
-/* Target the main container of the Carousel */
+
 .nuka-carousel {
     position: relative;
-    height: 200px;
-   
-    margin-top: 250px; /* Adjust the top margin as needed */
-    margin-bottom: 60px; /* Adjust the bottom margin as needed */
-    z-index: 11111;
+    margin-bottom: 10px; 
+
   }
   
   /* Target the images inside the Carousel */
   .nuka-carousel img {
     width: 100%;
-    height: 100%;
+    height: 50vh;
     object-fit: cover;
   }
   

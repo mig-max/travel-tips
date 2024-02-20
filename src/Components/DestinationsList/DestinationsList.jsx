@@ -9,6 +9,8 @@ import { Button } from "semantic-ui-react";
 import { ViewIcon } from "@chakra-ui/icons";
 import { Heading, Text, Img } from "@chakra-ui/react";
 
+import ImageCarousel from "../ImageCarousel/ImageCarousel";
+
 import "@fontsource/poppins";
 
 import "./DestinationsList.css";
@@ -110,62 +112,68 @@ function DestinationsList() {
   }
 
   return (
-    <div className="destinations-list">
-      {destination &&
-        destination.map((dest) => (
-          <div key={dest.id} className="destination-card">
-            <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"} padding={"10px"}>
-              {dest.city}
-            </Heading>
+    <div className="image-carousel-container">
+      <ImageCarousel />
+      <div className="destinations-list">
+        {destination &&
+          destination.map((dest) => (
+            <div key={dest.id} className="destination-card">
+              <Heading
+                fontFamily={"Poppins"}
+                color={"#FF6A3D"}
+                size={"lg"}
+                padding={"10px"}
+              >
+                {dest.city}
+              </Heading>
 
-            <Img
-              src={dest.imageURL}
-              alt={dest.name}
-              borderRadius={"sm"}
-              mx={"auto"}
-              display={"block"}
-            />
+              <Img
+                src={dest.imageURL}
+                alt={dest.name}
+                borderRadius={"sm"}
+                mx={"auto"}
+                display={"block"}
+              />
 
-            <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"20px"}>
-              <ViewIcon color="grey" /> {dest.topTip}
-            </Text>
+              <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"20px"}>
+                <ViewIcon color="grey" /> {dest.topTip}
+              </Text>
 
-            <Button
-              color="orange"
-              onClick={() => navigate(`/destinations/${dest.id}`)}
-            >
-              Details
-            </Button>
+              <Button
+                color="orange"
+                onClick={() => navigate(`/destinations/${dest.id}`)}
+              >
+                Details
+              </Button>
 
-            <Button
-              color="blue"
-              onClick={() => deleteButton(dest.id)}
-              disabled={deletingId === dest.id}
-              exact="true"
-            >
-              {" "}
-              Delete{" "}
-            </Button>
+              <Button
+                color="blue"
+                onClick={() => deleteButton(dest.id)}
+                disabled={deletingId === dest.id}
+                exact="true"
+              >
+                {" "}
+                Delete{" "}
+              </Button>
 
-            <div className="rating-icon-container">{_rating(dest)}</div>
+              <div className="rating-icon-container">{_rating(dest)}</div>
 
-            <button
-              onClick={() => addToFavorites(dest.id, !dest.isFavorite)}
-            >
-              <div className="heart-icon-container">
-                {dest.isFavorite ? (
-                  <img src={heart} className="heart-icon" alt="Fav" />
-                ) : (
-                  <img
-                    src={heartEmpty}
-                    className="heart-icon"
-                    alt="Not Fav"
-                  />
-                )}
-              </div>
-            </button>
-          </div>
-        ))}
+              <button onClick={() => addToFavorites(dest.id, !dest.isFavorite)}>
+                <div className="heart-icon-container">
+                  {dest.isFavorite ? (
+                    <img src={heart} className="heart-icon" alt="Fav" />
+                  ) : (
+                    <img
+                      src={heartEmpty}
+                      className="heart-icon"
+                      alt="Not Fav"
+                    />
+                  )}
+                </div>
+              </button>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

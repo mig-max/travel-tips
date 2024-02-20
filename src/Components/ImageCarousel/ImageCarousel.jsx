@@ -14,24 +14,42 @@ import bratislavaImage from '../../assets/bratislava-min.jpg'
 import amsterdamImage from '../../assets/amesterdam-min.jpg'
 import bruggesImage from '../../assets/brugges-min.jpg'
 
+import { useNavigate } from "react-router-dom";
+
+
+
+import './ImageCarousel.css';
+import "@fontsource/poppins";
+
+
+
+
+
+
 function ImageCarousel() {
+
+    const navigate = useNavigate();
   return (
+
     <div className="nuka-carousel">
-      <Carousel autoplay={true} autoplayInterval={6000}>
-        <img src={madridImage} alt="Madrid" />
-        <img src={portoImage} alt="Porto" />
-        <img src={copenhagenImage} alt="Copenhagen" />
-        <img src={romeImage} alt="Rome" />
-        <img src={londonImage} alt="London" />
-        <img src={gijonImage} alt="Gijon" />
-        <img src={berlinImage} alt="Berlin" />
-        <img src={parisImage} alt="Paris" />
-        <img src={pragueImage} alt="Prague" />
-        <img src={warsawImage} alt="Warsaw" />
-        <img src={viennaImage} alt="Vienna" />
-        <img src={bratislavaImage} alt="Bratislava" />
-        <img src={amsterdamImage} alt="Amsterdam" />
-        <img src={bruggesImage} alt="Brugges" />
+
+      <Carousel className="nuka" speed={1050} heightMode={"max"} height={300} autoplay={true} autoplayInterval={3000} dragging={"true"} wrapAround={"true"} >
+
+        <img src={madridImage} alt="Madrid" onClick={() => navigate("/destinations/1")} />   
+        <img src={portoImage} alt="Porto" onClick={() => navigate("/destinations/2")} />
+        <img src={copenhagenImage} alt="Copenhagen" onClick={() => navigate("/destinations/3")} />
+        <img src={romeImage} alt="Rome" onClick={() => navigate("/destinations/4")} />
+        <img src={londonImage} alt="London" onClick={() => navigate("/destinations/5")} />
+        <img src={gijonImage} alt="Gijon" onClick={() => navigate("/destinations/6")} />
+        <img src={berlinImage} alt="Berlin"onClick={() => navigate("/destinations/7")} />
+        <img src={parisImage} alt="Paris" onClick={() => navigate("/destinations/8")} />
+        <img src={pragueImage} alt="Prague" onClick={() => navigate("/destinations/9")} />
+        <img src={warsawImage} alt="Warsaw" onClick={() => navigate("/destinations/10")} />
+        <img src={viennaImage} alt="Vienna" onClick={() => navigate("/destinations/11")} />
+        <img src={bratislavaImage} alt="Bratislava" onClick={() => navigate("/destinations/12")} />
+        <img src={amsterdamImage} alt="Amsterdam" onClick={() => navigate("/destinations/13")} />
+        <img src={bruggesImage} alt="Brugges" onClick={() => navigate("/destinations/14")} />
+        
       </Carousel>
     </div>
   );

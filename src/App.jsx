@@ -13,7 +13,7 @@ import NotFound from './Pages/NotFound/NotFound'
 import About from './Pages/About/About'
 import Footer from './Components/Footer/Footer'
 import Favorites from './Components/Favorites/Favorites'
-import ImageCarousel from './Components/ImageCarousel/ImageCarousel'
+
 
 import { useState } from 'react' 
 
@@ -30,9 +30,7 @@ function App() {
   return (
     <>
     <Navbar/>
-
-    <ImageCarousel/>
-
+    
     <Routes>
 
       <Route path="/" element={<DestinationsList />} />
@@ -47,6 +45,8 @@ function App() {
       <Route path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />} />
       
     </Routes>
+
+   
 
  
 
