@@ -18,6 +18,7 @@ import "@fontsource/poppins"
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 function DestinationDetails() {
+
   const { destinationId } = useParams();
 
   const [destination, setDestination] = useState(API_URL[0]);
@@ -39,6 +40,8 @@ function DestinationDetails() {
   useEffect(() => {
     getDestination();
   }, [destinationId]);
+
+  
 
   return (
     <div className="content-container">
@@ -74,7 +77,7 @@ function DestinationDetails() {
               <br/><b>Top Tip:</b>  {destination.topTip}
               <br/><b> Top Bite:</b> {destination.topBite}
               <br/><b>Top Sight:</b> {destination.topSight}
-              <br/><b>Daily Budget:</b> {destination.dailyBudget}€
+              <br/><b>Daily Budget:</b> {destination.dailyBudget} €/day
               <br/><b>Where to Sleep:</b> {destination.accommodation}
               <br/><b>Top neighbourhood:</b> {destination.neighbourhood}
               <br/><b>Top park:</b> {destination.park}
@@ -113,10 +116,7 @@ function DestinationDetails() {
                 <Button color="blue" onClick={() => navigate("/")} exact="true">
                   Home
                 </Button>
-
-                <Button color="blue" onClick={() => navigate(-1)} exact="true" >
-                  Back
-                </Button>
+                
               </Stack>
             </Stack>
           </CardBody>
