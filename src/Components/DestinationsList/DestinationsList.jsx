@@ -30,9 +30,13 @@ function DestinationsList() {
   const getAllDestinationsToDisplay = () => {
     axios
       .get(API_URL)
-      .then((response) => setDestination(response.data))
-      .catch((error) => console.log("Error getting the list from API", error));
+      .then((response) => {
+        const sortedData =response.data.sort((a, b) => b.rating - a.rating);
+        setDestination(sortedData);
+      })
+      .catch((error) => console.log("Error from API", error));
   };
+
   useEffect(() => {
     getAllDestinationsToDisplay();
   }, []);
