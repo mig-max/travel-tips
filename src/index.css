@@ -29,6 +29,18 @@ body, html {
 }
 
 
+
+/* Styles for mobile devices */
+  
+  @media (max-width: 767px) {
+  
+    body {
+      font-size: 16px;
+  
+    }
+  
+  }
+
   /* Styles for tablets and above */
   
   @media (min-width: 768px) {
