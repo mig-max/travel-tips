@@ -20,6 +20,7 @@ function DestinationsList() {
   const [deletingId, setDeletingId] = useState(null);
 
   //sort
+  // eslint-disable-next-line no-unused-vars
   const [sortedDestination, setSortedDestination] = useState([]);
 
   const navigate = useNavigate();
@@ -113,7 +114,7 @@ function DestinationsList() {
       {destination &&
         destination.map((dest) => (
           <div key={dest.id} className="destination-card">
-            <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"}>
+            <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"} padding={"10px"}>
               {dest.city}
             </Heading>
 
@@ -125,8 +126,8 @@ function DestinationsList() {
               display={"block"}
             />
 
-            <Text fontFamily={"Poppins"} fontSize={"xl"}>
-              <ViewIcon color="orange" /> {dest.topTip}
+            <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"20px"}>
+              <ViewIcon color="grey" /> {dest.topTip}
             </Text>
 
             <Button
