@@ -50,17 +50,21 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <div className="flex items-center gap-8 bg-blue-500 bg-opacity-0">
+      <div className="flex items-center gap-9 bg-blue-500 bg-opacity-0">
        {/*  <img
           src={logo}
           alt="logo"
           className="w-[80px] md:w-[115px] object-cover"
         /> */} 
-      
+        <button onClick={() => navigate("/")}>
+        <Heading className={"navbar-brand"}  fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"} >TravelTips</Heading>
+        </button>
                 
         <div className="hidden md:flex gap-8">
 
-        <Heading className={"navbar-brand"}  fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"} >TravelTips</Heading>
+       
+
+
           {menu.map((item) => (
             <NavLink to={item.path} exact key={item.name}>
               <NavbarItem name={item.name} Icon={item.icon} />
