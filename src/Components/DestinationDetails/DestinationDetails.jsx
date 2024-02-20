@@ -14,20 +14,8 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import "@fontsource/poppins"
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
-
-//Google Maps
-const libraries = ['places'];
-const mapContainerStyle = {
-  width: '30vh',
-  height: '30vh',
-};
-const center = {
-  lat: 7.2905715, // default latitude
-  lng: 80.6337262, // default longitude
-};
 
 function DestinationDetails() {
   const { destinationId } = useParams();
@@ -35,13 +23,6 @@ function DestinationDetails() {
   const [destination, setDestination] = useState(API_URL[0]);
 
   const navigate = useNavigate();
-
-  //Google Maps
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDPv7elQ1AbUD8wKguP3J1La09U5BCwykA',
-    libraries,
-  });
-
 
   // get database with given id
   const getDestination = () => {
@@ -93,20 +74,11 @@ function DestinationDetails() {
               <br/><b>Top Tip:</b>  {destination.topTip}
               <br/><b> Top Bite:</b> {destination.topBite}
               <br/><b>Top Sight:</b> {destination.topSight}
-              <br/><b>Daily Budget:</b> {destination.dailyBudget}€
+              <br/><b>Daily Budget:</b> {destination.dailyBudget} €/ day
               <br/><b>Where to Sleep:</b> {destination.accommodation}
               <br/><b>Top neighbourhood:</b> {destination.neighbourhood}
               <br/><b>Top park:</b> {destination.park}
               <br/><b>Top museum:</b> {destination.museum}
-              <div>
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  zoom={10}
-                  center={center}
-                >
-                  <Marker position={center} />
-                </GoogleMap>
-              </div>
 
               <Divider margin={"10px"}/>
 

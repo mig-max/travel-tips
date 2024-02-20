@@ -1,15 +1,19 @@
 import logo from "../../assets/logo2.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { HiHome, HiMagnifyingGlass, HiStar } from "react-icons/hi2";
 import { HiDotsVertical } from "react-icons/hi";
 import { IoIosAddCircle, IoMdContact } from "react-icons/io";
 import { RiTeamFill } from "react-icons/ri";
 import { useState } from "react";
+import {Heading, } from "@chakra-ui/react";
 
 import "./Navbar.css"
+import '@fontsource/courgette';
 
 function Navbar() {
   const [toggle, setToggle] = useState(false);
+
+  const navigate = useNavigate();
 
   const menu = [
     {
@@ -47,12 +51,16 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="flex items-center gap-8 bg-blue-500 bg-opacity-0">
-        <img
+       {/*  <img
           src={logo}
           alt="logo"
           className="w-[80px] md:w-[115px] object-cover"
-        />
+        /> */} 
+      
+                
         <div className="hidden md:flex gap-8">
+
+        <Heading className={"navbar-brand"}  fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"} >TravelTips</Heading>
           {menu.map((item) => (
             <NavLink to={item.path} exact key={item.name}>
               <NavbarItem name={item.name} Icon={item.icon} />
