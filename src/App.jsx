@@ -13,18 +13,14 @@ import NotFound from './Pages/NotFound/NotFound'
 import About from './Pages/About/About'
 import Footer from './Components/Footer/Footer'
 import Favorites from './Components/Favorites/Favorites'
+import ImageCarousel from './Components/ImageCarousel/ImageCarousel'
+
 import { useState } from 'react' 
 
 
 function App() {
    const [favorites, setFavorites] = useState([]);
 
-  const addToFavorites = (destination) => {
-      // Check if the destination is not already in favorites
-      if (!favorites.some((fav) => fav.id === destination.id)) {
-          setFavorites((prevFavorites) => [...prevFavorites, destination]);
-      }
-  };
 
   const removeFromFavorites = (id) => {
       setFavorites((prevFavorites) => prevFavorites.filter((fav) => fav.id !== id));
@@ -34,6 +30,8 @@ function App() {
   return (
     <>
     <Navbar/>
+
+    <ImageCarousel/>
 
     <Routes>
 
@@ -49,6 +47,8 @@ function App() {
       <Route path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />} />
       
     </Routes>
+
+ 
 
     <Footer/> 
     
