@@ -1,18 +1,18 @@
 import Carousel from "nuka-carousel";
-import madridImage from "../../assets/madrid.jpg";
-import portoImage from "../../assets/porto.jpg";
-import copenhagenImage from "../../assets/copenhagen.jpg";
-import romeImage from "../../assets/rome.jpg";
-import londonImage from "../../assets/london.jpg";
-import gijonImage from "../../assets/gijon.jpg";
-import berlinImage from "../../assets/berlin.jpg";
-import parisImage from "../../assets/paris.jpg";
-import pragueImage from "../../assets/prague.jpg";
-import warsawImage from "../../assets/warsaw.jpg";
-import viennaImage from "../../assets/vienna.jpg";
-import bratislavaImage from "../../assets/bratislava.jpg";
-import amsterdamImage from "../../assets/amsterdam.jpg";
-import bruggesImage from "../../assets/brugges.jpg";
+import madridImage from '../../assets/madrid-min.jpg'
+import portoImage from '../../assets/porto-min.jpg';
+import copenhagenImage from '../../assets/copenhagen-min.jpg'
+import romeImage from '../../assets/rome-min.jpg'
+import londonImage from '../../assets/london-min.jpg'
+import gijonImage from '../../assets/gijon-min.jpg'
+import berlinImage from '../../assets/berlin-min.jpg'
+import parisImage from '../../assets/paris-min.jpg'
+import pragueImage from '../../assets/prague-min.jpg'
+import warsawImage from '../../assets/warsaw-min.jpg'
+import viennaImage from '../../assets/vienna-min.jpg'
+import bratislavaImage from '../../assets/bratislava-min.jpg'
+import amsterdamImage from '../../assets/amesterdam-min.jpg'
+import bruggesImage from '../../assets/brugges-min.jpg'
 
 function ImageCarousel() {
   return (
