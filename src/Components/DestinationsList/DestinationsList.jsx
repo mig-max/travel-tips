@@ -67,7 +67,30 @@ function DestinationsList() {
       .catch((error) => console.log("Error updating favorite status", error));
   };
 
-  //rating
+//rating
+    function sortByRating(data) {
+      return data.sort((a, b) => b.rating - a.rating);
+    }
+
+    function updateRating(destinationId, newRating) {
+      axios
+        .patch(`${API_URL}/${destinationId}`, { rating: newRating })
+        .then(() => {
+          const updatedDestinations = destination.map((dest) => {
+            if (dest.id === destinationId) {
+              return { ...dest, rating: newRating };
+            }
+            return dest;
+          });
+          setDestination(updatedDestinations);
+          setSortedDestination(sortByRating(updatedDestinations));
+        })
+        .catch((error) => console.log("Error updating rating", error));
+    }
+
+        
+
+  
   function _rating(destination) {
     const elements = Array.from({ length: 5 }, (v, i) => (
       <button
@@ -86,34 +109,7 @@ function DestinationsList() {
     ));
 
     return <>{elements}</>;
-  }
 
-  // sort data by rating
-  function sortByRating(data) {
-    return data.sort((a, b) => b.rating - a.rating);
-  }
-
-  useEffect(() => {
-    axios
-      .get(API_URL)
-      .then((response) => {
-        const sortedData = sortByRating(response.data);
-        setDestination(response.data);
-        setSortedDestination(sortedData);
-      })
-      .catch((error) => console.log("Error getting the list from API", error));
-  }, []);
-
-  function updateRating(destinationId, newRating) {
-    const updatedDestinations = destination.map((dest) => {
-      if (dest.id === destinationId) {
-        return { ...dest, rating: newRating };
-      }
-      return dest;
-    });
-    setDestination(updatedDestinations);
-    setSortedDestination(sortByRating(updatedDestinations));
-  }
 
   return (
     <div className="destinations-list" key={destination.id}>
