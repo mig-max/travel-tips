@@ -1,18 +1,18 @@
 import Carousel from "nuka-carousel";
-import madridImage from '../../assets/madrid-min.jpg'
-import portoImage from '../../assets/porto-min.jpg';
-import copenhagenImage from '../../assets/copenhagen-min.jpg'
-import romeImage from '../../assets/rome-min.jpg'
-import londonImage from '../../assets/london-min.jpg'
-import gijonImage from '../../assets/gijon-min.jpg'
-import berlinImage from '../../assets/berlin-min.jpg'
-import parisImage from '../../assets/paris-min.jpg'
-import pragueImage from '../../assets/prague-min.jpg'
-import warsawImage from '../../assets/warsaw-min.jpg'
-import viennaImage from '../../assets/vienna-min.jpg'
-import bratislavaImage from '../../assets/bratislava-min.jpg'
-import amsterdamImage from '../../assets/amesterdam-min.jpg'
-import bruggesImage from '../../assets/brugges-min.jpg'
+import madridImage from '../../assets/madrid.png';
+import portoImage from '../../assets/porto.png';
+import copenhagenImage from '../../assets/copenhagen.png';
+import romeImage from '../../assets/rome.png';
+import londonImage from '../../assets/london.png';
+import gijonImage from '../../assets/gijon.png';
+import berlinImage from '../../assets/berlin.png';
+import parisImage from '../../assets/paris.png';
+import pragueImage from '../../assets/prague.png';
+import warsawImage from '../../assets/warsaw.png';
+import viennaImage from '../../assets/vienna.png';
+import bratislavaImage from '../../assets/bratislava.png';
+import amsterdamImage from '../../assets/amesterdam.png';
+import bruggesImage from '../../assets/bruges.png';
 
 import { useNavigate } from "react-router-dom";
 
