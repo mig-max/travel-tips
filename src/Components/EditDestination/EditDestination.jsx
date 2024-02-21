@@ -108,6 +108,8 @@ function EditDestination() {
 
     const cloudinaryName = import.meta.env.VITE_CLOUDINARY_NAME;
     const uploadPreset = import.meta.env.VITE_UNSIGNED_UPLOAD_PRESET;
+    
+    
     const IMAGE_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${cloudinaryName}/upload`;
 
     const imageToUpload = new FormData();
