@@ -87,7 +87,7 @@ function DestinationDetails() {
                   <Label color="blue">
                     <LabelDetail>
                       <span className="good-for-night">
-                      <strong>Good for night out!</strong>
+                      <strong>Good for a night out!</strong>
                       </span>
                     </LabelDetail>
                   </Label>
@@ -97,7 +97,7 @@ function DestinationDetails() {
                   <Label color="green">
                     <LabelDetail>
                       <span className="good-for-family">
-                      <strong>Good for family!</strong></span>
+                      <strong>Family Friendly!</strong></span>
                     </LabelDetail>
                   </Label>
                 )}
