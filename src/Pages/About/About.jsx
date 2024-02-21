@@ -22,8 +22,9 @@ function About() {
               integrating it with either our own mock backend or an external
               API.
             </p>
-            <br />
-            <h2>Requirements</h2>
+            <Heading fontFamily={"Poppins"} fontSize={"2xl"} color={"#45474B"} >
+            Requirements
+            </Heading>
             <p>
               Create a Single Page Application (SPA), using React, consisting of
               multiple views.
