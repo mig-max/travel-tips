@@ -44,8 +44,8 @@ function Contact() {
     <Heading
      className="edit-header"
      fontFamily={"Poppins"}
-     fontSize={"4xl"}
-      color={"#FF6A3D"} 
+     fontSize={"3xl"}
+      color={"#45474B"} 
       > Leave your message here
       </Heading>
 

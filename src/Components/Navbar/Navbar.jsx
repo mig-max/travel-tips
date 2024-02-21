@@ -1,4 +1,4 @@
-import logo from "../../assets/logo2.png";
+
 import { NavLink, useNavigate } from "react-router-dom";
 import { HiHome, HiMagnifyingGlass, HiStar } from "react-icons/hi2";
 import { HiDotsVertical } from "react-icons/hi";
@@ -6,7 +6,7 @@ import { IoIosAddCircle, IoMdContact } from "react-icons/io";
 import { RiTeamFill } from "react-icons/ri";
 import { useState } from "react";
 import {Heading, } from "@chakra-ui/react";
-
+import NavbarItem from "./NavbarItem";
 import "./Navbar.css"
 import '@fontsource/courgette';
 
@@ -36,6 +36,8 @@ function Navbar() {
       icon: HiStar,
       path: "/favorites",
     },
+
+    /*
     {
       name: "About",
       icon: RiTeamFill,
@@ -46,25 +48,24 @@ function Navbar() {
       icon: IoMdContact,
       path: "/contact",
     },
+    */
   ];
 
   return (
     <div className="navbar">
-      <div className="flex items-center gap-9 bg-blue-500 bg-opacity-0">
-       {/*  <img
-          src={logo}
-          alt="logo"
-          className="w-[80px] md:w-[115px] object-cover"
-        /> */} 
+      <div className="flex space-between gap-9 bg-blue-500 bg-opacity-0">
+
+      <div className="nav-logo">
+    
         <button onClick={() => navigate("/")}>
-        <Heading className={"navbar-brand"}  fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"} >TravelTips</Heading>
+        <Heading className={"navbar-brand"}  fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"} >TopTravelTips</Heading>
         </button>
-                
+        </div>
+
+        <div className="icons-container">
+
+        <div className="hidden flex-col text-orange-600 font-medium sm:flex justify-end pt-4 pb-2 pr-6 pl-6">
         <div className="hidden md:flex gap-8">
-
-       
-
-
           {menu.map((item) => (
             <NavLink to={item.path} exact key={item.name}>
               <NavbarItem name={item.name} Icon={item.icon} />
@@ -101,8 +102,10 @@ function Navbar() {
         </div>
       </div>
     </div>
+    </div>
+    </div>
   );
 }
-import NavbarItem from "./NavbarItem";
+
 
 export default Navbar;

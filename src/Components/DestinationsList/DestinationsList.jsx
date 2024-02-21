@@ -139,7 +139,7 @@ function DestinationsList() {
                 display={"block"}
               />
 
-              <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"20px"}>
+              <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"10px"}>
                 <ViewIcon color="grey" /> {dest.topTip}
               </Text>
 

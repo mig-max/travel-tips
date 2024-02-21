@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 @font-face {
   font-family: 'Poppins';
@@ -20,6 +18,8 @@ body, html {
   min-height: 100vh;
   flex-direction: column;
   font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
 }
   
 
@@ -32,35 +32,14 @@ body, html {
 
 /* Styles for mobile devices */
   
-  @media (max-width: 767px) {
+  @media all and (max-width: 767px) {
   
     body {
       font-size: 16px;
-  
     }
   
   }
 
-  /* Styles for tablets and above */
-  
-  @media (min-width: 768px) {
-  
-    body {
-      font-size: 18px;
-  
-    }
-  
-  }
+
   
   
-  
-  /* Styles for desktops and above */
-  
-  @media (min-width: 1024px) {
-  
-    body {
-  
-      font-size: 20px;
-  
-    }
-}

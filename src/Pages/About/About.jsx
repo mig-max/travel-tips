@@ -9,7 +9,7 @@ function About() {
 
       <div className="about">
         <Box bg="whitesmoke" w="100%" p={4} color="black">
-          <Heading fontFamily={"Poppins"} fontSize={"4xl"} color={"#FF6A3D"}>
+          <Heading fontFamily={"Poppins"} fontSize={"3xl"} color={"#45474B"}>
             About this project
           </Heading>
 

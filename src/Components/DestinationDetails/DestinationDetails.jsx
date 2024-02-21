@@ -67,7 +67,7 @@ function DestinationDetails() {
           <CardBody>
             <Stack mt="6" spacing="3">
               <Box>
-                <Heading fontFamily={"Poppins"} fontSize={"5xl"} color={"#FF6A3D"}>{destination.city}</Heading>
+                <Heading fontFamily={"Poppins"} fontSize={"4xl"} color={"#45474B"}>{destination.city}</Heading>
                 <Text fontFamily={"Poppins"} fontSize={"xl"}>{destination.description}</Text>
               </Box>
               <Text fontFamily={"Poppins"} fontSize={"xl"} lineHeight={"32px"}>
@@ -112,10 +112,6 @@ function DestinationDetails() {
 
                 <Button color="blue" onClick={() => navigate("/")} exact="true">
                   Home
-                </Button>
-
-                <Button color="blue" onClick={() => navigate(-1)} exact="true" >
-                  Back
                 </Button>
               </Stack>
             </Stack>

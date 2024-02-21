@@ -30,7 +30,7 @@ function ImageCarousel() {
 
     <div className="nuka-carousel">
 
-      <Carousel className="nuka" speed={1000} heightMode={"max"} height={300} autoplay={true} autoplayInterval={3000} dragging={"true"} wrapAround={"true"} >
+      <Carousel className="nuka" speed={1000} heightMode={"max"} height={300} autoplay={true} autoplayInterval={3000} dragging={"true"} wrapAround={"true"} pauseOnHover={"false"} >
 
         <img src={madridImage} alt="Madrid" onClick={() => navigate("/destinations/1")} />   
         <img src={portoImage} alt="Porto" onClick={() => navigate("/destinations/2")} />
