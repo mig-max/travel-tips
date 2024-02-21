@@ -5,7 +5,6 @@ import { Form, Button, Input, TextArea } from "semantic-ui-react";
 import { Heading } from "@chakra-ui/react";
 import "./EditDestination.css";
 
-
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 function EditDestination() {
@@ -26,6 +25,10 @@ function EditDestination() {
     park: "",
     museum: "",
   });
+
+  const [imageURL, setImageURL] = useState("");
+  const [image, setImage] = useState(null);
+  const [waitingForImageUrl, setWaitingForImageUrl] = useState(false);
 
   const navigate = useNavigate();
 
@@ -99,6 +102,35 @@ function EditDestination() {
     setDestinationData({ ...destinationData, [name]: inputValue });
   };
 
+  // Upload image to the server
+  const handleFileUpload = (event) => {
+    setWaitingForImageUrl(true);
+
+    const cloudinaryName = import.meta.env.VITE_CLOUDINARY_NAME;
+    const uploadPreset = import.meta.env.VITE_UNSIGNED_UPLOAD_PRESET;
+    const IMAGE_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${cloudinaryName}/upload`;
+
+    const imageToUpload = new FormData();
+    imageToUpload.append("file", event.target.files[0]);
+    imageToUpload.append("upload_preset", uploadPreset);
+
+    axios
+      .post(IMAGE_UPLOAD_URL, imageToUpload)
+      .then((response) => {
+        console.log("Image uploaded successfully", response.data);
+        setImageURL(response.data.secure_url);
+        setWaitingForImageUrl(false);
+        setDestinationData({
+          ...destinationData,
+          imageURL: response.data.secure_url,
+        });
+      })
+      .catch((error) => {
+        console.error("Error uploading the image", error);
+        setWaitingForImageUrl(false);
+      });
+  };
+
   return (
     <div className="content-container">
       {/* To ensure that there's enough content to make the page scrollable */}
@@ -108,11 +140,17 @@ function EditDestination() {
           fontFamily={"Poppins"}
           fontSize={"3xl"}
           color={"#45474B"}
-        >  Edit your Travel Tip here!
+        >
+          {" "}
+          Edit your Travel Tip here!
         </Heading>
-         
-        <Form fontFamily={"Poppins"} fontSize={"xl"} className="edit-container" onSubmit={handleSubmit}>
-        
+
+        <Form
+          fontFamily={"Poppins"}
+          fontSize={"xl"}
+          className="edit-container"
+          onSubmit={handleSubmit}
+        >
           <Form.Field>
             <label className="form-label">City:</label>
             <Input
@@ -192,6 +230,11 @@ function EditDestination() {
           </Form.Field>
 
           <Form.Field>
+            <label className="form-label">Upload Image:</label>
+            <input type="file" name="imageUpload" onChange={handleFileUpload} />
+          </Form.Field>
+
+          <Form.Field>
             <label className="form-label">Top neighbourhood: </label>
             <Input
               className="form-input"
@@ -257,7 +300,6 @@ function EditDestination() {
               onChange={handleInputChange}
             />
           </Form.Field>
-
         </Form>
 
         <Form className="button-container" onSubmit={handleSubmit}>
@@ -269,10 +311,15 @@ function EditDestination() {
             color="blue"
             onClick={() => navigate(`/destinations/${destinationId}`)}
             exact="true"
-          >  Back </Button>
+          >
+            {" "}
+            Back{" "}
+          </Button>
 
-          <Button color="blue" onClick={() => navigate("/")} exact="true"> Home   </Button>
-
+          <Button color="blue" onClick={() => navigate("/")} exact="true">
+            {" "}
+            Home{" "}
+          </Button>
         </Form>
       </div>
     </div>
