@@ -53,59 +53,37 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <div className="flex space-between gap-9 bg-blue-500 bg-opacity-0">
+      <div className="flex justify-between items-center gap-9 bg-blue-500 bg-opacity-0">
 
-      <div className="nav-logo">
-    
-        <button onClick={() => navigate("/")}>
-        <Heading className={"navbar-brand"}  fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"} >TopTravelTips</Heading>
-        </button>
+        <div className="nav-logo">
+          <button onClick={() => navigate("/")}>
+            <Heading className={"navbar-brand"} fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"}>TopTravelTips</Heading>
+          </button>
         </div>
 
         <div className="icons-container">
-
-        <div className="hidden flex-col text-orange-600 font-medium sm:flex justify-end pt-4 pb-2 pr-6 pl-6">
-        <div className="hidden md:flex gap-8">
-          {menu.map((item) => (
-            <NavLink to={item.path} exact key={item.name}>
-              <NavbarItem name={item.name} Icon={item.icon} />
-            </NavLink>
-          ))}
-        </div>
-        <div
-          className="flex md:hidden gap-8"
-          onClick={() => setToggle(!toggle)}
-        >
-          {menu.map(
-            (item, index) =>
-              index < 3 && (
+          <div className="hidden flex-col text-orange-600 font-medium sm:flex justify-end pt-4 pb-2 pr-6 pl-6">
+            <div className="hidden md:flex gap-8">
+              {menu.map((item) => (
+                <NavLink to={item.path} exact key={item.name}>
+                  <NavbarItem name={item.name} Icon={item.icon} />
+                </NavLink>
+              ))}
+            </div>
+            <div className="flex md:hidden gap-8" onClick={() => setToggle(!toggle)}>
+              {menu.slice(0, 4).map((item) => (
                 <NavLink to={item.path} exact key={item.name}>
                   <NavbarItem name={""} Icon={item.icon} />
                 </NavLink>
-              )
-          )}
-          <div className="md:hidden">
-            <NavbarItem name={""} Icon={HiDotsVertical} />
-            {toggle ? (
-              <div className="absolute mt-3">
-                {menu.map(
-                  (item, index) =>
-                    index > 3 && (
-                      <NavLink to={item.path} exact key={item.name}>
-                        <NavbarItem name={item.name} Icon={item.icon} />
-                      </NavLink>
-                    )
-                )}
-              </div>
-            ) : null}
+              ))}
+            
+            </div>
           </div>
         </div>
+
       </div>
-    </div>
-    </div>
     </div>
   );
 }
-
 
 export default Navbar;

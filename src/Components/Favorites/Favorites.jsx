@@ -120,61 +120,84 @@ function Favorites() {
   }
 
   return (
-    <div className="destinations-list" key={destination.id}>
-      {destination
-        .filter((dest) => dest.isFavorite)
-        .map((destination) => (
-          <div key={destination.id} className="destination-card">
-            <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"}>
-              {destination.city}
-            </Heading>
+    <div className="content-container">
+      {/* To ensure that there's enough content to make the page scrollable */}
 
-            <Img
-              src={destination.imageURL}
-              alt={destination.name}
-              borderRadius={"sm"}
-              mx={"auto"}
-              display={"block"}
-            />
+      <div className="edit">
+        <Heading
+          className="edit-header"
+          fontFamily={"Poppins"}
+          fontSize={"3xl"}
+          color={"#45474B"}
+        >
+          {" "}
+          Your Favorites
+        </Heading>
 
-            <Text fontFamily={"Poppins"} fontSize={"xl"}>
-              <ViewIcon color="orange" /> {destination.topTip}
-            </Text>
+        <div className="destinations-list" key={destination.id}>
+          {destination
+            .filter((dest) => dest.isFavorite)
+            .map((destination) => (
+              <div key={destination.id} className="destination-card">
+                <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"}>
+                  {destination.city}
+                </Heading>
 
-            <Button
-              color="orange"
-              onClick={() => navigate(`/destinations/${destination.id}`)}
-            >
-              Details
-            </Button>
+                <Img
+                  src={destination.imageURL}
+                  alt={destination.name}
+                  borderRadius={"sm"}
+                  mx={"auto"}
+                  display={"block"}
+                />
 
-            <Button
-              color="blue"
-              onClick={() => deleteButton(destination.id)}
-              disabled={deletingId === destination.id}
-              exact="true"
-            >
-              {" "}
-              Delete{" "}
-            </Button>
+                <Text fontFamily={"Poppins"} fontSize={"xl"}>
+                  <ViewIcon color="grey" padding={"10px"} />{" "}
+                  {destination.topTip}
+                </Text>
 
-            <div className="rating-icon-container">{_rating(destination)}</div>
+                <Button
+                  color="orange"
+                  onClick={() => navigate(`/destinations/${destination.id}`)}
+                >
+                  Details
+                </Button>
 
-            <button
-              onClick={() =>
-                addToFavorites(destination.id, !destination.isFavorite)
-              }
-            >
-              <div className="heart-icon-container">
-                {destination.isFavorite ? (
-                  <img src={heart} className="heart-icon" alt="Fav" />
-                ) : (
-                  <img src={heartEmpty} className="heart-icon" alt="Not Fav" />
-                )}
+                <Button
+                  color="blue"
+                  onClick={() => deleteButton(destination.id)}
+                  disabled={deletingId === destination.id}
+                  exact="true"
+                >
+                  {" "}
+                  Delete{" "}
+                </Button>
+
+                <div className="rating-icon-container">
+                  {_rating(destination)}
+                </div>
+
+                <button
+                  onClick={() =>
+                    addToFavorites(destination.id, !destination.isFavorite)
+                  }
+                >
+                  <div className="heart-icon-container">
+                    {destination.isFavorite ? (
+                      <img src={heart} className="heart-icon" alt="Fav" />
+                    ) : (
+                      <img
+                        src={heartEmpty}
+                        className="heart-icon"
+                        alt="Not Fav"
+                      />
+                    )}
+                  </div>
+                </button>
               </div>
-            </button>
-          </div>
-        ))}
+            ))}
+        </div>
+      </div>
     </div>
   );
 }

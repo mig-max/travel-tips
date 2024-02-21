@@ -14,6 +14,7 @@
 .nav-logo {
     margin: 10px;
     padding-right: 300px;
+    flex: 1;
 }
 
 .icons-container {
@@ -23,3 +24,39 @@
 
 
 
+@media all and (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start; 
+        justify-content: space-between;
+    }
+
+    .nav-logo {
+        padding-right: 0; 
+        margin-bottom: 10px; 
+        flex-basis: auto; 
+
+    }
+
+    .icons-container {
+        margin-left: 0; /* Reset left margin */
+        display: flex;
+        justify-content: flex-end; /* Align icons to the end */
+        width: 100%; /* Occupy full width */
+    }
+
+    .icons-container > div {
+        display: block; /* Display icons in mobile view */
+    }
+}
+
+
+
+
+@media all and (max-width: 560px) {
+
+    .nav-logo {
+       display: none;
+
+    }
+}

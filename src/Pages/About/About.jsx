@@ -8,8 +8,8 @@ function About() {
       {/* To ensure that there's enough content to make the page scrollable */}
 
       <div className="about">
-        <Box bg="whitesmoke" w="100%" p={4} color="black">
-          <Heading fontFamily={"Poppins"} fontSize={"3xl"} color={"#45474B"}>
+        <Box bg="whitesmoke"  w="100%" p={4} color="black">
+          <Heading fontFamily={"Poppins"} fontSize={"3xl"} color={"#45474B"} >
             About this project
           </Heading>
 
@@ -33,27 +33,27 @@ function About() {
               <br /> The app should be responsive.
             </p>
           </Text>
-        </Box>
 
-        <br />
-        <Box bg="whitesmoke" w="100%" p={4} color="black">
+          <div className="button-container">
+          <div className="miguel">
           <h3>Miguel Chito</h3>
-
           <a href="https://github.com/donxito">
             <Button color="orange">Github</Button>
           </a>
           <a href="XXXXXXXXXXX">
             <Button color="blue">LinkedIn</Button>
           </a>
-
+          </div>
+          <div className="max">
           <h3>Max Wellings</h3>
-
           <a href="https://github.com/Logrance">
             <Button color="orange">Github</Button>
           </a>
           <a href="XXXXXXX">
             <Button color="blue">LinkedIn</Button>
           </a>
+          </div>
+          </div>
         </Box>
       </div>
     </div>
