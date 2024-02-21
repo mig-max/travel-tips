@@ -29,7 +29,7 @@ function AddDestination() {
     event.preventDefault();
 
      // Check if any required field is empty
-     if (!city || !description) {
+     if (!city || !description || !topTip || !imageURL ) {
       alert("Please fill in all required fields.");
       return; // Stop form submission
     }
@@ -142,7 +142,7 @@ function AddDestination() {
           />
         </Form.Field>
 
-        <Form.Field>
+        <Form.Field required>
           <label className="form-label">Top Tip:</label>
           <Input
             name="topTip"
@@ -181,7 +181,7 @@ function AddDestination() {
           />
         </Form.Field>
 
-        <Form.Field>
+        <Form.Field required>
           <label className="form-label">Image URL:</label>
           <Input
             name="imageURL"

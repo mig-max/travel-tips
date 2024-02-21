@@ -5,10 +5,10 @@
 
   }
   
-  /* Target the images inside the Carousel */
   .nuka-carousel img {
     width: 100%;
     height: 90vh;
     object-fit: cover;
+    cursor: pointer;
   }
   

@@ -50,11 +50,12 @@ function DestinationDetails() {
       boxShadow={"md"}
       borderRadius={"md"}
       margin={"20px"}
+      marginTop={"5px"}
       p={4}
     >
         <Flex flex="1" gap="1" alignItems="center" flexWrap="wrap" >
           <Image
-            boxSize={"600px"}
+            boxSize={"550px"}
             objectFit={"cover"}
             src={destination.imageURL}
             alt={destination.city}
