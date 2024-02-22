@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Form, Button, Input, TextArea } from "semantic-ui-react";
+import { Form, Button, Input, TextArea, Message } from "semantic-ui-react";
 import { Heading } from "@chakra-ui/react";
 import "./EditDestination.css";
 
@@ -27,8 +27,9 @@ function EditDestination() {
   });
 
   const [imageURL, setImageURL] = useState("");
-  const [image, setImage] = useState(null);
   const [waitingForImageUrl, setWaitingForImageUrl] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [hasErrors, setHasErrors] = useState(false);
 
   const navigate = useNavigate();
 
@@ -69,8 +70,8 @@ function EditDestination() {
           .put(`${API_URL}/${destinationId}`, updatedDestinationData)
           .then((response) => {
             console.log("Destination updated successfully", response);
-            alert("Destination updated successfully");
-            goBack();
+
+            navigate(`/destinations/${destinationId}`);
           })
           .catch((error) => {
             console.log(
@@ -87,11 +88,21 @@ function EditDestination() {
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Check if any required field is empty
+    if (
+      !destinationData.city ||
+      !destinationData.description ||
+      !destinationData.topTip
+    ) {
+      setHasErrors(true);
+      return; // Stop form submission
+    }
+    
     updateDestination();
-  };
-  // Function to navigate back
-  const goBack = () => {
-    navigate(`/`);
+    setFormSubmitted(true);
+
+    
   };
 
   // Update the destination data state and user interface
@@ -108,8 +119,7 @@ function EditDestination() {
 
     const cloudinaryName = import.meta.env.VITE_CLOUDINARY_NAME;
     const uploadPreset = import.meta.env.VITE_UNSIGNED_UPLOAD_PRESET;
-    
-    
+
     const IMAGE_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${cloudinaryName}/upload`;
 
     const imageToUpload = new FormData();
@@ -305,22 +315,36 @@ function EditDestination() {
         </Form>
 
         <Form className="button-container" onSubmit={handleSubmit}>
-          <Button color="orange" type="submit" exact="true">
-            Update
+          {hasErrors && (
+            <Message 
+              negative
+              className="error-msg"
+              fontFamily={"Poppins"}
+              justifyContent={"center"}
+            >
+              Please fill in all required fields
+            </Message>
+          )}
+
+          <Button 
+          color="orange" 
+          type="submit" 
+          exact="true" 
+          disabled={formSubmitted}
+          >
+          {formSubmitted ? "Updating..." : "Update"}
+           
           </Button>
 
           <Button
             color="blue"
             onClick={() => navigate(`/destinations/${destinationId}`)}
             exact="true"
-          >
-            {" "}
-            Back{" "}
+          >Back
           </Button>
 
           <Button color="blue" onClick={() => navigate("/")} exact="true">
-            {" "}
-            Home{" "}
+            Home
           </Button>
         </Form>
       </div>

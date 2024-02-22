@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Message } from "semantic-ui-react";
 import {Input, Heading, Textarea } from "@chakra-ui/react";
 
 import "./Contact.css"
@@ -11,6 +11,8 @@ function Contact() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const navigate = useNavigate();
 
@@ -23,12 +25,13 @@ function Contact() {
       email: email,
     };
     console.log(message);
-    alert(
-      `Thank you for your message. 
-      We will get back to you as soon as possible.`
-    );
 
-    navigate(`/`);
+    setFormSubmitted(true);
+
+    setTimeout(() => {
+      navigate("/");
+    }, 2000); // Adjust delay time as needed
+
 
     setName("");
     setPhone("");
@@ -117,6 +120,14 @@ function Contact() {
 
         <Button color="blue" onClick={() => navigate("/")} exact="true">Home</Button>    
       </Form>
+
+      {formSubmitted && (
+      <Message positive fontFamily={"Poppins"}>
+        <Message.Header>Thank you for your message!</Message.Header>
+        <p>We'll get back to you shortly.</p>
+      </Message>
+      )}
+
     </div>
     </div>
   );

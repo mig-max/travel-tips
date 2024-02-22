@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form, Input } from "semantic-ui-react";
+import { Button, Checkbox, Form, Input, Message } from "semantic-ui-react";
 import { Heading, Textarea } from "@chakra-ui/react";
 import "./AddDestination.css";
-import.meta.env.VITE_CLOUDINARY_NAME;
+
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
@@ -23,15 +23,20 @@ function AddDestination() {
   const [imageURL, setImageURL] = useState("");
   const [image, setImage] = useState(null);
   const [waitingForImageUrl, setWaitingForImageUrl] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [hasErrors, setHasErrors] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
+   
 
     // Check if any required field is empty
     if (!city || !description || !topTip) {
-      alert("Please fill in all required fields.");
+      setHasErrors(true);
       return; // Stop form submission
     }
+
+    // hide error msg
+    setHasErrors(false);
 
     const newDestination = {
       id: Math.floor(Math.random() * 100), // temporary unique ID
@@ -51,8 +56,13 @@ function AddDestination() {
     axios
       .post(API_URL, newDestination)
       .then((response) => {
-        alert("Destination added successfully!");
         console.log(response);
+
+        const newDestination = response.data.id;
+        console.log(newDestination);
+
+        // Show success message
+        setFormSubmitted(true);
 
         // Clear form fields after submission
         setCity("");
@@ -66,7 +76,9 @@ function AddDestination() {
         setIsGoodForFamily(false);
         setImageURL("");
         setImage([]);
-        navigate("/");
+
+        // Navigate back to destinations
+        navigate(`/destinations/${newDestination}`);
       })
       .catch((error) =>
         console.log("Error posting the new destination", error)
@@ -76,17 +88,16 @@ function AddDestination() {
   // upload image to the server
   const handleFileUpload = (event) => {
     setWaitingForImageUrl(true); // Disable the button until the image is uploaded to the server
-  
+
     const cloudinaryName = import.meta.env.VITE_CLOUDINARY_NAME;
     const uploadPreset = import.meta.env.VITE_UNSIGNED_UPLOAD_PRESET;
-    
-    
+
     const IMAGE_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${cloudinaryName}/upload`;
-  
+
     const imageToUpload = new FormData();
     imageToUpload.append("file", event.target.files[0]);
     imageToUpload.append("upload_preset", uploadPreset);
-  
+
     axios
       .post(IMAGE_UPLOAD_URL, imageToUpload)
       .then((response) => {
@@ -96,13 +107,14 @@ function AddDestination() {
       })
       .catch((error) => {
         console.error("Error uploading the image", error);
-        setWaitingForImageUrl(false);
+      
       });
   };
 
   return (
     <div className="content-container">
       {/* To ensure that there's enough content to make the page scrollable */}
+
       <div className="edit">
         <Heading
           className="edit-header"
@@ -110,11 +122,11 @@ function AddDestination() {
           fontSize={"3xl"}
           color={"#45474B"}
         >
-          {" "}
           Add a new destination here
         </Heading>
 
         <Form
+          display={"flex"}
           fontFamily={"Poppins"}
           fontSize={"xl"}
           className="edit-container"
@@ -255,8 +267,24 @@ function AddDestination() {
         </Form>
 
         <Form className="button-container" onSubmit={handleSubmit}>
-          <Button color="orange" type="submit" exact="true">
-            Add destination
+          {hasErrors && (
+            <Message 
+              negative
+              className="error-msg"
+              fontFamily={"Poppins"}
+              justifyContent={"center"}
+            >
+              Please fill in all required fields
+            </Message>
+          )}
+
+          <Button 
+          color="orange" 
+          type="submit"
+          exact="true" 
+          onClick={handleSubmit}
+          disabled={waitingForImageUrl || formSubmitted}>
+            {waitingForImageUrl ? "Uploading image..." : formSubmitted ? "Adding destination" : "Add Destination"}
           </Button>
 
           <Button color="blue" onClick={() => navigate("/")} exact="true">
