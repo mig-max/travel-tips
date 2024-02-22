@@ -1,9 +1,7 @@
 
 import { NavLink, useNavigate } from "react-router-dom";
 import { HiHome, HiMagnifyingGlass, HiStar } from "react-icons/hi2";
-import { HiDotsVertical } from "react-icons/hi";
-import { IoIosAddCircle, IoMdContact } from "react-icons/io";
-import { RiTeamFill } from "react-icons/ri";
+import { IoIosAddCircle} from "react-icons/io";
 import { useState } from "react";
 import {Heading, } from "@chakra-ui/react";
 import NavbarItem from "./NavbarItem";
@@ -36,28 +34,16 @@ function Navbar() {
       icon: HiStar,
       path: "/favorites",
     },
-
-    /*
-    {
-      name: "About",
-      icon: RiTeamFill,
-      path: "/about",
-    },
-    {
-      name: "Contacts",
-      icon: IoMdContact,
-      path: "/contact",
-    },
-    */
   ];
 
   return (
     <div className="navbar">
-      <div className="flex justify-between items-center gap-9 bg-blue-500 bg-opacity-0">
+
+      <div className="flex justify-around items-center gap-9 bg-white">
 
         <div className="nav-logo">
           <button onClick={() => navigate("/")}>
-            <Heading className={"navbar-brand"} fontFamily={"Courgette"} fontSize={"6xl"} color={"#FF6A3D"} textDecoration={"underline"}>TopTravelTips</Heading>
+            <Heading className={"navbar-brand"} fontFamily={"Courgette"} fontSize={{base: "3xl", md:"5xl", lg:"6xl"}} color={"#FF6A3D"} textDecoration={"underline"} >TopTravelTips</Heading>
           </button>
         </div>
 

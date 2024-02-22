@@ -22,8 +22,8 @@ const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 //Google Maps
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "30vh",
-  height: "30vh",
+  width: "50vw",
+  height: "50vh",
 };
 
 function DestinationDetails() {
@@ -86,7 +86,7 @@ function DestinationDetails() {
         <Flex flex="1" gap="1" alignItems="center" flexWrap="wrap">
           <Image
             boxSize={"600px"}
-            height={"800px"}
+            height={"1000px"}
             objectFit={"cover"}
             src={destination.imageURL}
             alt={destination.city}
@@ -157,9 +157,11 @@ function DestinationDetails() {
                 <>
                   <br />
                   <b>Top museum:</b> {destination.museum}
+                  
                 </>
               )}
               <div>
+                <br />
                 {destination.lat && destination.lng && (
                   <GoogleMap
                     mapContainerStyle={mapContainerStyle}
@@ -191,7 +193,7 @@ function DestinationDetails() {
               )}
             </Text>
 
-            <Stack direction={{ base: "column", md: "row" }} spacing="4" mt="4">
+            <Stack direction={{ base: "column", md: "row" }} spacing="2" mt="2">
               <Button
                 color="orange"
                 onClick={() => navigate(`/destinations/${destination.id}/edit`)}

@@ -1,13 +1,15 @@
 .navbar {
-    position: static;
+    position: sticky;
+    background-color: white;
     top: 0;
     left: 0;
     width: 100%;
     margin: 5px;
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     justify-content: space-between;
+    z-index: 333;
 }
 
 .nav-logo {
@@ -21,49 +23,32 @@
     margin-left: 300px;
 }
 
+@media only screen and (max-width: 768px) {
+    .nav-logo {
+        margin: 10px;
+        padding: 10px;
+        flex: 1;
+        width: 20vw;
+    }
 
-@media (min-width: 1025px) {
-    .navbar {
-        flex-direction: row; 
+    .icons-container {
+        margin-left: 10px; 
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .nav-logo {
+        margin: 10px;
+        padding: 0;
+        flex: 1;
+        width: 100%;
+        text-align: left;
+    }
+
+    .icons-container {
+        justify-content: center; 
         align-items: center; 
-        justify-content: space-between;
-    }
-
-    .nav-logo {
-        padding-right: 10px; 
-        margin-bottom: 0; 
-        flex-basis: auto; 
-    }
-
-}
-
-
-@media all and (max-width: 1024px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start; 
-        justify-content: space-between;
-    }
-
-    .nav-logo {
-        padding-right: 0; 
-        margin-bottom: 10px; 
-        flex-basis: auto; 
-
-    }
-
-    .icons-container > div {
-        display: block; 
-    }
-}
-
-
-
-
-@media all and (max-width: 560px) {
-
-    .nav-logo {
-       display: none;
-
+        margin: 10px 0;
+        width: 100%;
     }
 }

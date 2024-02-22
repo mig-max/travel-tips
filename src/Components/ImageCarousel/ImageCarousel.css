@@ -1,14 +1,34 @@
 
 .nuka-carousel {
     position: relative;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+
 
   }
   
   .nuka-carousel img {
-    width: 100%;
+    width: 100vw;
     height: 90vh;
     object-fit: cover;
     cursor: pointer;
+    align-self: center;
+
   }
   
+  @media only screen and (max-width: 768px) {
+    .nuka-carousel img {
+      width: 100vw;
+      height: 50vh;
+    }
+  }
+
+  @media only screen and (max-width: 650) {
+    .nuka-carousel img {
+      width: 100vw;
+      height: 40vh;    
+    }
+  }
