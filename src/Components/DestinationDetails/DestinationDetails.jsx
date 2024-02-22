@@ -13,17 +13,17 @@ import {
   Flex,
   Divider,
 } from "@chakra-ui/react";
-import "@fontsource/poppins"
+import "@fontsource/poppins";
 //Google Maps
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 const API_URL = `https://travel-tips-api.adaptable.app/destinations`;
 
 //Google Maps
-const libraries = ['places'];
+const libraries = ["places"];
 const mapContainerStyle = {
-  width: '30vh',
-  height: '30vh',
+  width: "30vh",
+  height: "30vh",
 };
 
 function DestinationDetails() {
@@ -33,9 +33,9 @@ function DestinationDetails() {
 
   const navigate = useNavigate();
 
-   //Google Maps
-   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDPv7elQ1AbUD8wKguP3J1La09U5BCwykA',
+  //Google Maps
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "AIzaSyDPv7elQ1AbUD8wKguP3J1La09U5BCwykA",
     libraries,
   });
 
@@ -55,35 +55,35 @@ function DestinationDetails() {
     getDestination();
   }, [destinationId]);
 
-    //Google Maps
+  //Google Maps
 
-    if (!isLoaded) {
-      return <div>Loading map...</div>;
-    }
-  
-    if (!destination) {
-      return <div>Loading destination details...</div>;
-    }
-  
-    const center = {
-      lat: destination.lat,
-      lng: destination.lng,
-    };
+  if (!isLoaded) {
+    return <div>Loading map...</div>;
+  }
+
+  if (!destination) {
+    return <div>Loading destination details...</div>;
+  }
+
+  const center = {
+    lat: destination.lat,
+    lng: destination.lng,
+  };
 
   return (
     <div className="content-container">
-    {/* To ensure that there's enough content to make the page scrollable */}
-    <Card
-      direction={{ base: "column", sm: "row" }}
-      overflow="hidden"
-      variant="outline"
-      boxShadow={"md"}
-      borderRadius={"md"}
-      margin={"20px"}
-      marginTop={"5px"}
-      p={4}
-    >
-        <Flex flex="1" gap="1" alignItems="center" flexWrap="wrap" >
+      {/* To ensure that there's enough content to make the page scrollable */}
+      <Card
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        variant="outline"
+        boxShadow={"md"}
+        borderRadius={"md"}
+        margin={"20px"}
+        marginTop={"5px"}
+        p={4}
+      >
+        <Flex flex="1" gap="1" alignItems="center" flexWrap="wrap">
           <Image
             boxSize={"550px"}
             objectFit={"cover"}
@@ -95,70 +95,118 @@ function DestinationDetails() {
             display={"block"}
           />
         </Flex>
-          <CardBody>
-            <Stack mt="6" spacing="3">
-              <Box>
-                <Heading fontFamily={"Poppins"} fontSize={"4xl"} color={"#45474B"}>{destination.city}</Heading>
-                <Text fontFamily={"Poppins"} fontSize={"xl"}>{destination.description}</Text>
-              </Box>
-              <Text fontFamily={"Poppins"} fontSize={"xl"} lineHeight={"32px"}>
-              <br/><b>Top Tip:</b>  {destination.topTip}
-              <br/><b> Top Bite:</b> {destination.topBite}
-              <br/><b>Top Sight:</b> {destination.topSight}
-              <br/><b>Daily Budget:</b> {destination.dailyBudget} €/ day
-              <br/><b>Where to Sleep:</b> {destination.accommodation}
-              <br/><b>Top neighbourhood:</b> {destination.neighbourhood}
-              <br/><b>Top park:</b> {destination.park}
-              <br/><b>Top museum:</b> {destination.museum}
-              <div>
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  zoom={10}
-                  center={center}
-                >
-                  <Marker position={center} />
-                </GoogleMap>
-              </div>
-
-              <Divider margin={"10px"}/>
-
-                {destination.isGoodForNight === true && (
-                  <Label color="blue">
-                    <LabelDetail>
-                      <span className="good-for-night">
-                      <strong>Good for a night out!</strong>
-                      </span>
-                    </LabelDetail>
-                  </Label>
-                )}
-
-                {destination.isGoodForFamily === true && (
-                  <Label color="green">
-                    <LabelDetail>
-                      <span className="good-for-family">
-                      <strong>Family Friendly!</strong></span>
-                    </LabelDetail>
-                  </Label>
-                )}
-              </Text>
-              <Stack
-                direction={{ base: "column", md: "row" }}
-                spacing="4"
-                mt="4"
+        <CardBody>
+          <Stack mt="6" spacing="3">
+            <Box>
+              <Heading
+                fontFamily={"Poppins"}
+                fontSize={"4xl"}
+                color={"#45474B"}
               >
-                <Button color="orange" onClick={() => navigate(`/destinations/${destination.id}/edit`)} exact="true" >
-                  Edit
-                </Button>
+                {destination.city}
+              </Heading>
+              <Text fontFamily={"Poppins"} fontSize={"xl"}>
+                {destination.description}
+              </Text>
+            </Box>
+            <Text fontFamily={"Poppins"} fontSize={"xl"} lineHeight={"32px"}>
+              {destination.topTip && (
+                <>
+                  <br />
+                  <b>Top Tip:</b> {destination.topTip}
+                </>
+              )}
+              {destination.topBite && (
+                <>
+                  <br />
+                  <b> Top Bite:</b> {destination.topBite}
+                </>
+              )}
+              {destination.topSight && (
+                <>
+                  <br />
+                  <b>Top Sight:</b> {destination.topSight}
+                </>
+              )}
+              {destination.dailyBudget && destination.dailyBudget !== 0 && (
+                <>
+                  <br />
+                  <b>Daily Budget:</b> {destination.dailyBudget} €/ day
+                </>
+              )}
+              {destination.accommodation && (
+                <>
+                  <br />
+                  <b>Where to Sleep:</b> {destination.accommodation}
+                </>
+              )}
+              {destination.neighbourhood && (
+                <>
+                  <br />
+                  <b>Top neighbourhood:</b> {destination.neighbourhood}
+                </>
+              )}
+              {destination.park && (
+                <>
+                  <br />
+                  <b>Top park:</b> {destination.park}
+                </>
+              )}
+              {destination.museum && (
+                <>
+                  <br />
+                  <b>Top museum:</b> {destination.museum}
+                </>
+              )}
+              <div>
+                {destination.lat && destination.lng && (
+                  <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={10}
+                    center={center}
+                  >
+                    <Marker position={center} />
+                  </GoogleMap>
+                )}
+              </div>
+              <Divider margin={"10px"} />
+              {destination.isGoodForNight && (
+                <Label color="blue">
+                  <LabelDetail>
+                    <span className="good-for-night">
+                      <strong>Good for a night out!</strong>
+                    </span>
+                  </LabelDetail>
+                </Label>
+              )}
+              {destination.isGoodForFamily && (
+                <Label color="green">
+                  <LabelDetail>
+                    <span className="good-for-family">
+                      <strong>Family Friendly!</strong>
+                    </span>
+                  </LabelDetail>
+                </Label>
+              )}
+            </Text>
 
-                <Button color="blue" onClick={() => navigate("/")} exact="true">
-                  Home
-                </Button>
-              </Stack>
+            <Stack direction={{ base: "column", md: "row" }} spacing="4" mt="4">
+              <Button
+                color="orange"
+                onClick={() => navigate(`/destinations/${destination.id}/edit`)}
+                exact="true"
+              >
+                Edit
+              </Button>
+
+              <Button color="blue" onClick={() => navigate("/")} exact="true">
+                Home
+              </Button>
             </Stack>
-          </CardBody>
-    </Card>
+          </Stack>
+        </CardBody>
+      </Card>
     </div>
-    
   );
 }
 
