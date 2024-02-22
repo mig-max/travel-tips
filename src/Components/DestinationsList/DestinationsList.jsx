@@ -6,7 +6,6 @@ import heart from "../../assets/heart.png";
 import iconStarEmpty from "./../../assets/star_empty.svg";
 import iconStarFull from "./../../assets/star_full.svg";
 import { Button } from "semantic-ui-react";
-import { ViewIcon } from "@chakra-ui/icons";
 import { Heading, Text, Img } from "@chakra-ui/react";
 
 import ImageCarousel from "../ImageCarousel/ImageCarousel";
@@ -137,7 +136,7 @@ function DestinationsList() {
               />
 
               <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"10px"}>
-                <ViewIcon color="grey" /> {dest.topTip}
+               {dest.topTip}
               </Text>
 
               <Button
