@@ -98,11 +98,9 @@ function EditDestination() {
       setHasErrors(true);
       return; // Stop form submission
     }
-    
+
     updateDestination();
     setFormSubmitted(true);
-
-    
   };
 
   // Update the destination data state and user interface
@@ -316,7 +314,7 @@ function EditDestination() {
 
         <Form className="button-container" onSubmit={handleSubmit}>
           {hasErrors && (
-            <Message 
+            <Message
               negative
               className="error-msg"
               fontFamily={"Poppins"}
@@ -326,21 +324,21 @@ function EditDestination() {
             </Message>
           )}
 
-          <Button 
-          color="orange" 
-          type="submit" 
-          exact="true" 
-          disabled={formSubmitted}
+          <Button
+            color="orange"
+            type="submit"
+            exact="true"
+            disabled={formSubmitted}
           >
-          {formSubmitted ? "Updating..." : "Update"}
-           
+            {formSubmitted ? "Updating..." : "Update"}
           </Button>
 
           <Button
             color="blue"
             onClick={() => navigate(`/destinations/${destinationId}`)}
             exact="true"
-          >Back
+          >
+            Back
           </Button>
 
           <Button color="blue" onClick={() => navigate("/")} exact="true">

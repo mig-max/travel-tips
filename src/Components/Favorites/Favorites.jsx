@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,6 +6,7 @@ import heart from "../../assets/heart.png";
 import iconStarEmpty from "./../../assets/star_empty.svg";
 import iconStarFull from "./../../assets/star_full.svg";
 import { Button } from "semantic-ui-react";
+import { ViewIcon } from "@chakra-ui/icons";
 import { Heading, Text, Img } from "@chakra-ui/react";
 import "@fontsource/poppins";
 import "../DestinationsList/DestinationsList.css";
@@ -72,7 +72,7 @@ function Favorites() {
   };
 
   //rating
-  function _rating(destination) {
+  const _rating = (destination) => {
     const elements = Array.from({ length: 5 }, (v, i) => (
       <button
         key={i}
@@ -93,9 +93,7 @@ function Favorites() {
   }
 
   // sort data by rating
-  function sortByRating(data) {
-    return data.sort((a, b) => b.rating - a.rating);
-  }
+  const sortByRating = (data) => data.sort((a, b) => b.rating - a.rating);
 
   useEffect(() => {
     axios
@@ -108,7 +106,7 @@ function Favorites() {
       .catch((error) => console.log("Error getting the list from API", error));
   }, []);
 
-  function updateRating(destinationId, newRating) {
+  const updateRating = (destinationId, newRating) => {
     const updatedDestinations = destination.map((dest) => {
       if (dest.id === destinationId) {
         return { ...dest, rating: newRating };
@@ -152,6 +150,7 @@ function Favorites() {
                 />
 
                 <Text fontFamily={"Poppins"} fontSize={"xl"}>
+                  <ViewIcon color="grey" padding={"10px"} />{" "}
                   {destination.topTip}
                 </Text>
 

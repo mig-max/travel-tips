@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,7 +6,7 @@ import heart from "../../assets/heart.png";
 import iconStarEmpty from "./../../assets/star_empty.svg";
 import iconStarFull from "./../../assets/star_full.svg";
 import { Button } from "semantic-ui-react";
-
+import { ViewIcon } from "@chakra-ui/icons";
 import { Heading, Text, Img } from "@chakra-ui/react";
 
 import ImageCarousel from "../ImageCarousel/ImageCarousel";
@@ -23,7 +22,6 @@ function DestinationsList() {
   const [deletingId, setDeletingId] = useState(null);
 
   //sort
-  // eslint-disable-next-line no-unused-vars
   const [sortedDestination, setSortedDestination] = useState([]);
 
   const navigate = useNavigate();
@@ -32,7 +30,7 @@ function DestinationsList() {
     axios
       .get(API_URL)
       .then((response) => {
-        const sortedData =response.data.sort((a, b) => b.rating - a.rating);
+        const sortedData = response.data.sort((a, b) => b.rating - a.rating);
         setDestination(sortedData);
       })
       .catch((error) => console.log("Error from API", error));
@@ -76,11 +74,9 @@ function DestinationsList() {
   };
 
   //rating
-  function sortByRating(data) {
-    return data.sort((a, b) => b.rating - a.rating);
-  }
+  const sortByRating = (data) => data.sort((a, b) => b.rating - a.rating);
 
-  function updateRating(destinationId, newRating) {
+  const updateRating = (destinationId, newRating) => {
     axios
       .patch(`${API_URL}/${destinationId}`, { rating: newRating })
       .then(() => {
@@ -94,9 +90,9 @@ function DestinationsList() {
         setSortedDestination(sortByRating(updatedDestinations));
       })
       .catch((error) => console.log("Error updating rating", error));
-  }
+  };
 
-  function _rating(destination) {
+  const _rating = (destination) => {
     const elements = Array.from({ length: 5 }, (v, i) => (
       <button
         key={i}
@@ -114,7 +110,7 @@ function DestinationsList() {
     ));
 
     return <>{elements}</>;
-  }
+  };
 
   return (
     <div className="image-carousel-container">
@@ -141,7 +137,7 @@ function DestinationsList() {
               />
 
               <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"10px"}>
-               {dest.topTip}
+                <ViewIcon color="grey" /> {dest.topTip}
               </Text>
 
               <Button
