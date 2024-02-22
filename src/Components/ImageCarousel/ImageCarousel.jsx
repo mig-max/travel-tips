@@ -11,7 +11,7 @@ import pragueImage from '../../assets/prague.png';
 import warsawImage from '../../assets/warsaw.png';
 import viennaImage from '../../assets/vienna.png';
 import bratislavaImage from '../../assets/bratislava.png';
-import amsterdamImage from '../../assets/amesterdam.png';
+import amsterdamImage from '../../assets/amsterdam.png';
 import bruggesImage from '../../assets/bruges.png';
 
 import { useNavigate } from "react-router-dom";

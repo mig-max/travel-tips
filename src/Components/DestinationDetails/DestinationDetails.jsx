@@ -85,7 +85,8 @@ function DestinationDetails() {
       >
         <Flex flex="1" gap="1" alignItems="center" flexWrap="wrap">
           <Image
-            boxSize={"550px"}
+            boxSize={"600px"}
+            height={"800px"}
             objectFit={"cover"}
             src={destination.imageURL}
             alt={destination.city}
