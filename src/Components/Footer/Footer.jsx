@@ -4,7 +4,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="footer">
-      <footer className="h-10 flex items-center gap-8 bg-orange-500 bg-opacity-50">
+      <footer className="h-12 flex items-center gap-8 bg-orange-500 bg-opacity-50">
         <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
           <span className="text-sm text-[white] sm:text-center dark:text-[white}">
             © 2024{" "}
