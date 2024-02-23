@@ -2,7 +2,9 @@
 
 ## Description
 
-    Welcome to our travel tips website! This project has been created as a Single Page Application (SPA) using React. The application consists of multiple views, providing a user-friendly interface for exploring and sharing travel advice. Integrated with an external API, the React application allows users to perform CRUD operations (Create, Read, Update, Delete) on travel-related content.
+Welcome to our travel tips website! This project has been created as a Single Page Application (SPA) using React. 
+The application consists of multiple views, providing a user-friendly interface for exploring and sharing travel advice. 
+Integrated with an external API, the React application allows users to perform CRUD operations (Create, Read, Update, Delete) on travel-related content.
 
 ## Screenshots
 
