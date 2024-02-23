@@ -282,7 +282,6 @@ function AddDestination() {
           color="orange" 
           type="submit"
           exact="true" 
-          onClick={handleSubmit}
           disabled={waitingForImageUrl || formSubmitted}>
             {waitingForImageUrl ? "Uploading image..." : formSubmitted ? "Adding destination" : "Add Destination"}
           </Button>
