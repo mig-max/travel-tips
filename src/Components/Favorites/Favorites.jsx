@@ -6,7 +6,6 @@ import heart from "../../assets/heart.png";
 import iconStarEmpty from "./../../assets/star_empty.svg";
 import iconStarFull from "./../../assets/star_full.svg";
 import { Button } from "semantic-ui-react";
-import { ViewIcon } from "@chakra-ui/icons";
 import { Heading, Text, Img } from "@chakra-ui/react";
 import "@fontsource/poppins";
 import "../DestinationsList/DestinationsList.css";
@@ -137,7 +136,7 @@ function Favorites() {
             .filter((dest) => dest.isFavorite)
             .map((destination) => (
               <div key={destination.id} className="destination-card">
-                <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"}>
+                <Heading fontFamily={"Poppins"} color={"#FF6A3D"} size={"lg"} padding={"10px"}>
                   {destination.city}
                 </Heading>
 
@@ -149,8 +148,7 @@ function Favorites() {
                   display={"block"}
                 />
 
-                <Text fontFamily={"Poppins"} fontSize={"xl"}>
-                  <ViewIcon color="grey" padding={"10px"} />{" "}
+                <Text fontFamily={"Poppins"} fontSize={"xl"} padding={"10px"}>
                   {destination.topTip}
                 </Text>
 
