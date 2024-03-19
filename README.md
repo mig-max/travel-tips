@@ -1,5 +1,3 @@
-# README Project 2
-
 ## Description
 
 Welcome to our travel tips website! This project has been created as a Single Page Application (SPA) using React. 
